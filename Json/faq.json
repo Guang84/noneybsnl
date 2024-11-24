@@ -1,0 +1,110 @@
+{
+    "faq": [
+      {
+        "id": 1,
+        "question": "How do I choose the best broadband plan for my needs?",
+        "answer": "To select the ideal broadband plan, consider your internet usage, the number of devices you plan to connect, and your budget. We recommend checking the plan speeds and the monthly cost to find what suits you.",
+        "answerLink": "/nav/resetpass.html",
+        "category": "Plan Selection"
+      },
+      {
+        "id": 2,
+        "question": "How do I change my Wi-Fi password?",
+        "answer": "To change your Wi-Fi password, log in to your router's admin panel. You can typically access this by entering the router's IP address into your browser. Look for the Wi-Fi settings, then update the password.",
+        "answerLink": "/router-settings",
+        "category": "Router Management"
+      },
+      {
+        "id": 3,
+        "question": "What should I do if my internet is slow?",
+        "answer": "If your internet is slow, try restarting your router. You can also check for network congestion by limiting the number of devices connected. Additionally, ensure that your router is in a central location and not obstructed.",
+        "answerLink": "/troubleshooting",
+        "category": "Troubleshooting"
+      },
+      {
+        "id": 4,
+        "question": "How can I reset my router to factory settings?",
+        "answer": "To reset your router, press and hold the reset button located on the back of the device for about 10-15 seconds. After the reset, the router will return to its default settings.",
+        "answerLink": "/router-settings",
+        "category": "Router Management"
+      },
+      {
+        "id": 5,
+        "question": "How can I contact customer support?",
+        "answer": "You can contact customer support via email at help@bsnl.com or by calling +1234567890. We also offer a live chat feature on our website during business hours.",
+        "answerLink": "/contact",
+        "category": "Support"
+      },
+      {
+        "id": 6,
+        "question": "What is the process to upgrade my broadband plan?",
+        "answer": "To upgrade your broadband plan, simply visit our 'Plans' section, select a plan that suits your needs, and follow the upgrade instructions. Your new plan will be activated immediately after payment.",
+        "answerLink": "/plans/upgrade",
+        "category": "Plan Management"
+      },
+      {
+        "id": 7,
+        "question": "How do I reset my account password?",
+        "answer": "To reset your account password, click the 'Forgot Password' link on the login page. You'll be prompted to enter your email address, and a reset link will be sent to your inbox.",
+        "answerLink": "/account/reset-password",
+        "category": "Account Management"
+      },
+      {
+        "id": 8,
+        "question": "Can I get a refund if I cancel my plan early?",
+        "answer": "Refunds for early plan cancellation depend on the terms and conditions of your service agreement. Typically, refunds are only issued for unused months. Please contact customer support for further assistance.",
+        "answerLink": "/plans/cancellation",
+        "category": "Plan Management"
+      },
+      {
+        "id": 9,
+        "question": "How can I set up my new router?",
+        "answer": "To set up your new router, first plug it in and connect it to your modem. Then, follow the setup instructions provided with the router. You will typically need to access the router's admin panel via a browser to configure Wi-Fi settings.",
+        "answerLink": "/router-setup",
+        "category": "Router Management"
+      },
+      {
+        "id": 10,
+        "question": "What should I do if I forgot my router's admin password?",
+        "answer": "If you forgot your router's admin password, you can reset the router to factory settings. This is done by pressing and holding the reset button on the router for 10-15 seconds. Afterward, you can set a new password.",
+        "answerLink": "/router-settings/reset-password",
+        "category": "Router Management"
+      },
+      {
+        "id": 11,
+        "question": "How do I upgrade my Wi-Fi speed?",
+        "answer": "To upgrade your Wi-Fi speed, contact our customer support or visit the 'Plans' section on our website. You may need to change your current plan or upgrade your router to one that supports higher speeds.",
+        "answerLink": "/plans/upgrade-speed",
+        "category": "Wi-Fi Optimization"
+      },
+      {
+        "id": 12,
+        "question": "How do I check my broadband usage?",
+        "answer": "To check your broadband usage, log in to your account on our website and visit the 'Usage' section. You'll find detailed information about your data usage for the current billing cycle.",
+        "answerLink": "/account/usage",
+        "category": "Account Management"
+      },
+      {
+        "id": 13,
+        "question": "How do I change my payment method?",
+        "answer": "To change your payment method, log in to your account and navigate to the 'Payment Settings' section. You can update your credit card, debit card, or other payment options there.",
+        "answerLink": "/account/payment-settings",
+        "category": "Account Management"
+      },
+      {
+        "id": 14,
+        "question": "Is there a way to pause my internet service temporarily?",
+        "answer": "Yes, you can pause your internet service temporarily by contacting customer support. We offer short-term pause options depending on your plan and location.",
+        "answerLink": "/support/pause-service",
+        "category": "Support"
+      },
+      {
+        "id": 15,
+        "question": "How can I improve my Wi-Fi signal strength?",
+        "answer": "To improve your Wi-Fi signal, ensure that your router is placed in a central location. Avoid placing it near large metal objects or electronic devices. You can also try using Wi-Fi extenders for larger homes.",
+        "answerLink": "/troubleshooting/boost-wifi",
+        "category": "Wi-Fi Optimization"
+      }
+    ]
+  }
+  

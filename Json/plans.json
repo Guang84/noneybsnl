@@ -1,0 +1,56 @@
+[
+    {
+        "name": "Fibre Rural Home Wifi",
+        "price": "Rs. 399 Per Month",
+        "speed": "Upto 30 Mbps till 1400 GB & <br> Upto 4 Mbps beyond 1400 GB",
+        "details": " - Unlimited Data Download <br> - Local + STD: Unlimited calls to any network  <br> -For Individual Category."
+    },
+    {
+        "name": "Fibre Basic Neo",
+        "price": "Rs. 449 Per Month",
+        "speed": "Upto 50 Mbps till 3300 GB & <br> Upto 4 Mbps beyond 3300 GB",
+        "details": " - Unlimited Data Download <br> - Local + STD: Unlimited calls to any network  <br> -Unlimited 24 Hours."
+    },    
+    {
+        "name": "Fibre Rural Home Wifi",
+        "price": "Rs. 2,394 For 6 Month",
+        "speed": "Upto 30 Mbps till 1400 GB & <br> Upto 4 Mbps beyond 1400 GB",
+        "details": " - Unlimited Data Download <br> - Local + STD: Unlimited calls to any network  <br> -For Individual Category."
+    },
+    {
+        "name": "Fibre Values Plus",
+        "price": "Rs. 5,094 For 6 Month",
+        "speed": "Upto 150 Mbps till 5000 GB & <br> Upto 10 Mbps beyond 5000 GB",
+        "details": " - Unlimited Data Download <br> - Local + STD: Unlimited calls to any network  <br> -Unlimited 24 Hours."
+    },
+    {
+        "name": "SuperStar PremiumPlus",
+        "price": "Rs. 5,994 For 6 Month",
+        "speed": "Upto 200 Mbps till 5000 GB & <br> Upto 10 Mbps beyond 5000 GB",
+        "details": " - Unlimited Data Download <br> - Local + STD: Unlimited calls to any network  <br> -Free OTT:HOtstar, Lions Gate, Shemaroo, Hungamaa, SonyLiv,Zee5, YuppTV, EpicOn($)."
+    },
+    {
+        "name": "Fibre Values Plus",
+        "price": "Rs. 8,915 For 12 Month",
+        "speed": "Upto 150 Mbps till 5000 GB & <br> Upto 10 Mbps beyond 5000 GB",
+        "details": " - Unlimited Data Download <br> - Local + STD: Unlimited calls to any network  <br> -Unlimited 24 Hours."
+    },
+    {
+        "name": "SuperStar PremiumPlus",
+        "price": "Rs. 11,988 For 12 Month + 1 Month Free Service",
+        "speed": "Upto 200 Mbps till 5000 GB & <br> Upto 10 Mbps beyond 5000 GB",
+        "details": " - Unlimited Data Download <br> - Local + STD: Unlimited calls to any network  <br> -Free OTT:HOtstar, Lions Gate, Shemaroo, Hungamaa, SonyLiv,Zee5, YuppTV, EpicOn($)."
+    },
+    {
+        "name": "Fibre Values Plus",
+        "price": "Rs. 17,405 For 24 Month",
+        "speed": "Upto 150 Mbps till 5000 GB & <br> Upto 10 Mbps beyond 5000 GB",
+        "details": " - Unlimited Data Download <br> - Local + STD: Unlimited calls to any network  <br> -Unlimited 24 Hours."
+    },
+    {
+        "name": "SuperStar PremiumPlus",
+        "price": "Rs. 23,976 For 24 Month + 3 Month Free Service",
+        "speed": "Upto 200 Mbps till 5000 GB & <br> Upto 10 Mbps beyond 5000 GB",
+        "details": " - Unlimited Data Download <br> - Local + STD: Unlimited calls to any network  <br> -Free OTT:HOtstar, Lions Gate, Shemaroo, Hungamaa, SonyLiv,Zee5, YuppTV, EpicOn($)."
+    }
+]
