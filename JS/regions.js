@@ -1,7 +1,7 @@
 // Function to load regions from the JSON file and populate the table
 function loadRegions() {
     // Fetch the JSON file from the /db/region.json path
-    fetch('https://raw.githubusercontent.com/Guang84/weblink/refs/heads/main/regions.json')  // Path to the regions JSON file
+    fetch('https://raw.githubusercontent.com/Guang84/myweb-link/refs/heads/main/Json/regions.json')  // Path to the regions JSON file
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');

@@ -16,7 +16,7 @@ async function fetchPlans() {
 
     try {
         // Fetch the data from the local JSON file
-        const response = await fetch('https://raw.githubusercontent.com/Guang84/weblink/refs/heads/main/plans.json');
+        const response = await fetch('https://raw.githubusercontent.com/Guang84/myweb-link/refs/heads/main/Json/plans.json');
         
         // Check if response is successful (status 200)
         if (!response.ok) {
