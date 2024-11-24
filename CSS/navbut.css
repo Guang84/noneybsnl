@@ -1,0 +1,24 @@
+/* Floating Button - Top Left using ID */
+#fixbut {
+    position: fixed;
+    top: 20px;  /* Distance from the top */
+    left: 20px; /* Distance from the left */
+    background-color: #0a3d73; /* Background color of the button */
+    color: white; /* Text color */
+    font-size: 24px; /* Icon size */
+    border: none;
+    padding: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+  }
+  
+  #fixbut:hover {
+    background-color: #ff7b00; /* Change background on hover */
+  }
+  
+  #fixbut:focus {
+    outline: none; /* Remove focus outline */
+  }
+  

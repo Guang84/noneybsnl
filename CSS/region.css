@@ -1,0 +1,44 @@
+.instruction-item {
+    margin-bottom: 20px;
+}
+
+.instruction-item h3 {
+    font-size: 22px;
+    color: #008CBA;
+}
+
+.instruction-item p, .instruction-item ul {
+    font-size: 16px;
+    color: #555;
+}
+
+.instruction-item ul {
+    list-style-type: square;
+    padding-left: 20px;
+}
+
+.instruction-item ul li {
+    margin-bottom: 10px;
+}
+
+/* Support Table Styles */
+.support-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.support-table th, .support-table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.support-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.support-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
