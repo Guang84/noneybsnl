@@ -1,2 +1,2 @@
 # myweb-link
-BSNL gd_ent dynamic json
+BSNL gd_ent dynamic file's 
