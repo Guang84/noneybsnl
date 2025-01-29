@@ -1,6 +1,147 @@
 {
   "welcomeSections": [
     {
+      "id": 1,
+      "heading": "Happy New Year, 2025!",
+      "quote": "A journey of a thousand miles begins with a single step.",
+      "description": "Every great achievement starts with that first bold step forward. Together, let’s create a path to success, one step at a time.",
+      "buttonText": "Take the First Step"
+    },
+    {
+      "id": 2,
+      "heading": "Start Fresh Today",
+      "quote": "The best time to plant a tree was 20 years ago. The second best time is now.",
+      "description": "Today is your chance to grow and create a better tomorrow. Start fresh, and the results will follow.",
+      "buttonText": "Plant Your Future"
+    },
+    {
+      "id": 3,
+      "heading": "Seize the Day",
+      "quote": "Carpe Diem! Seize the day, and make it extraordinary.",
+      "description": "Opportunities are everywhere if you’re willing to grab them. Let’s make today a masterpiece.",
+      "buttonText": "Get Started"
+    },
+    {
+      "id": 4,
+      "heading": "Dream Big",
+      "quote": "Shoot for the moon. Even if you miss, you’ll land among the stars.",
+      "description": "Great achievements come from dreaming big. Imagine more, do more, and be more.",
+      "buttonText": "Dare to Dream"
+    },
+    {
+      "id": 5,
+      "heading": "Create Your Path",
+      "quote": "The best way to predict the future is to create it.",
+      "description": "Take charge of your destiny. Today is the day to make your future bright.",
+      "buttonText": "Shape Your Future"
+    },
+    {
+      "id": 6,
+      "heading": "Rise and Shine",
+      "quote": "The early bird catches the worm.",
+      "description": "Start your day early with determination and energy. Every sunrise brings new opportunities.",
+      "buttonText": "Wake Up and Win"
+    },
+    {
+      "id": 7,
+      "heading": "Make a Difference",
+      "quote": "Be the change you want to see in the world.",
+      "description": "Every small step towards change leads to a brighter, better world. Let’s make a difference together.",
+      "buttonText": "Be the Change"
+    },
+    {
+      "id": 8,
+      "heading": "Strive for Excellence",
+      "quote": "Excellence is not a skill; it’s an attitude.",
+      "description": "Dedicate yourself to being excellent in everything you do. Your attitude shapes your success.",
+      "buttonText": "Aim for Excellence"
+    },
+    {
+      "id": 9,
+      "heading": "Stay Determined",
+      "quote": "Fall seven times, stand up eight.",
+      "description": "Persistence is the key to success. Keep going, no matter the obstacles.",
+      "buttonText": "Never Give Up"
+    },
+    {
+      "id": 10,
+      "heading": "Unlock Your Potential",
+      "quote": "You are braver than you believe, stronger than you seem, and smarter than you think.",
+      "description": "Believe in yourself. Unlock the incredible potential within you and achieve greatness.",
+      "buttonText": "Discover Your Strength"
+    },
+    {
+      "id": 11,
+      "heading": "Chase Your Dreams",
+      "quote": "All our dreams can come true if we have the courage to pursue them.",
+      "description": "Dream big and never stop chasing your aspirations. Courage turns dreams into reality.",
+      "buttonText": "Pursue Your Dreams"
+    },
+    {
+      "id": 12,
+      "heading": "Success Awaits",
+      "quote": "Success doesn’t come to you. You go to it.",
+      "description": "Take action and move forward. Success is the result of effort and determination.",
+      "buttonText": "Step Towards Success"
+    },
+    {
+      "id": 13,
+      "heading": "Inspire Others",
+      "quote": "What you do has a far greater impact than what you say.",
+      "description": "Lead by example and inspire those around you. Your actions define your legacy.",
+      "buttonText": "Be the Inspiration"
+    },
+    {
+      "id": 14,
+      "heading": "Keep Moving Forward",
+      "quote": "Life is like riding a bicycle. To keep your balance, you must keep moving.",
+      "description": "Don’t stop. Keep moving, and you’ll discover new horizons.",
+      "buttonText": "Move Ahead"
+    },
+    {
+      "id": 15,
+      "heading": "Stay Positive",
+      "quote": "Keep your face always toward the sunshine—and shadows will fall behind you.",
+      "description": "A positive mindset attracts positive outcomes. Focus on the good.",
+      "buttonText": "Stay Optimistic"
+    },
+    {
+      "id": 16,
+      "heading": "Learn and Grow",
+      "quote": "An investment in knowledge pays the best interest.",
+      "description": "Learn something new every day. Growth begins with knowledge.",
+      "buttonText": "Start Learning"
+    },
+    {
+      "id": 17,
+      "heading": "Trust the Process",
+      "quote": "Great things take time.",
+      "description": "Be patient and trust that your efforts will bear fruit in time.",
+      "buttonText": "Keep Going"
+    },
+    {
+      "id": 18,
+      "heading": "Work Hard, Dream Big",
+      "quote": "The harder you work for something, the greater you’ll feel when you achieve it.",
+      "description": "Dream big and put in the effort. The rewards will be worth it.",
+      "buttonText": "Work Towards Success"
+    },
+    {
+      "id": 19,
+      "heading": "Start Where You Are",
+      "quote": "Start where you are. Use what you have. Do what you can.",
+      "description": "Success begins with taking action right now.",
+      "buttonText": "Start Now"
+    },
+    {
+      "id": 20,
+      "heading": "Believe in Yourself",
+      "quote": "Believe you can, and you’re halfway there.",
+      "description": "Confidence is the first step to achievement. Trust in your abilities.",
+      "buttonText": "Believe and Achieve"
+    
+},
+    {
       "id": 21,
       "heading": "Break Barriers",
       "quote": "Limits exist only in the mind. Shatter them and soar.",
@@ -350,5 +491,6 @@
       "description": "Your journey isn’t just for you—it’s a blueprint for others.",
       "buttonText": "Inspire Others"
     }
+
   ]
 }
