@@ -1,0 +1,354 @@
+{
+  "welcomeSections": [
+    {
+      "id": 21,
+      "heading": "Break Barriers",
+      "quote": "Limits exist only in the mind. Shatter them and soar.",
+      "description": "Your potential is limitless when you refuse to accept boundaries. Break free and redefine what’s possible.",
+      "buttonText": "Break Free"
+    },
+    {
+      "id": 22,
+      "heading": "Embrace the Climb",
+      "quote": "The view from the top is worth every step of the struggle.",
+      "description": "Challenges are the stairs to greatness. Keep climbing, and the world will unfold before you.",
+      "buttonText": "Climb Higher"
+    },
+    {
+      "id": 23,
+      "heading": "Write Your Story",
+      "quote": "Life isn’t about finding yourself—it’s about creating yourself.",
+      "description": "You hold the pen to your destiny. Write a story worth remembering.",
+      "buttonText": "Begin Writing"
+    },
+    {
+      "id": 24,
+      "heading": "Silence Doubt",
+      "quote": "Doubt kills more dreams than failure ever will.",
+      "description": "Trust your journey. The only voice that matters is the one that says, 'You can.'",
+      "buttonText": "Trust Yourself"
+    },
+    {
+      "id": 25,
+      "heading": "Fuel Your Fire",
+      "quote": "Passion is the engine of achievement. Keep yours burning.",
+      "description": "When you love what you do, effort transforms into purpose.",
+      "buttonText": "Ignite Passion"
+    },
+    {
+      "id": 26,
+      "heading": "Rise from Ashes",
+      "quote": "Setbacks are setups for comebacks.",
+      "description": "Every fall is a chance to rise stronger. Turn your scars into stars.",
+      "buttonText": "Rise Again"
+    },
+    {
+      "id": 27,
+      "heading": "Build Bridges",
+      "quote": "Collaboration turns ordinary ideas into extraordinary revolutions.",
+      "description": "Together, we can achieve what no one can alone. Connect, collaborate, and conquer.",
+      "buttonText": "Unite Now"
+    },
+    {
+      "id": 28,
+      "heading": "Master Time",
+      "quote": "Yesterday is history. Tomorrow is a mystery. Today is a gift—that’s why it’s called the present.",
+      "description": "Don’t waste the now. This moment is your greatest asset.",
+      "buttonText": "Seize Today"
+    },
+    {
+      "id": 29,
+      "heading": "Defy Gravity",
+      "quote": "When you stop fearing failure, you start defying gravity.",
+      "description": "Weightless ambition can lift you beyond the ordinary. Dare to float.",
+      "buttonText": "Defy Limits"
+    },
+    {
+      "id": 30,
+      "heading": "Grow Through Life",
+      "quote": "Storms make trees take deeper roots.",
+      "description": "Adversity isn’t your enemy—it’s your teacher. Grow stronger through every challenge.",
+      "buttonText": "Embrace Growth"
+    },
+    {
+      "id": 31,
+      "heading": "Lead with Heart",
+      "quote": "Leadership isn’t about power—it’s about empowering others.",
+      "description": "True leaders light torches, not hog the spotlight.",
+      "buttonText": "Lead Boldly"
+    },
+    {
+      "id": 32,
+      "heading": "Find Your North Star",
+      "quote": "Purpose is the compass that guides you through chaos.",
+      "description": "When you know your ‘why,’ no ‘how’ is too hard.",
+      "buttonText": "Discover Purpose"
+    },
+    {
+      "id": 33,
+      "heading": "Dare to Leap",
+      "quote": "Courage doesn’t mean you’re fearless—it means you jump anyway.",
+      "description": "The greatest rewards lie just beyond your comfort zone.",
+      "buttonText": "Take the Leap"
+    },
+    {
+      "id": 34,
+      "heading": "Rewire Your Mind",
+      "quote": "Your thoughts shape your reality. Choose them wisely.",
+      "description": "A positive mind is the canvas for a masterpiece life.",
+      "buttonText": "Think Positively"
+    },
+    {
+      "id": 35,
+      "heading": "Celebrate Small Wins",
+      "quote": "Greatness is a mosaic of tiny victories.",
+      "description": "Don’t wait for the finish line—applaud every step forward.",
+      "buttonText": "Celebrate Now"
+    },
+    {
+      "id": 36,
+      "heading": "Outpace Yesterday",
+      "quote": "Your only competition is the person you were yesterday.",
+      "description": "Progress, not perfection, is the path to excellence.",
+      "buttonText": "Improve Daily"
+    },
+    {
+      "id": 37,
+      "heading": "Unleash Curiosity",
+      "quote": "Questions are the keys to uncharted worlds.",
+      "description": "Stay curious, and you’ll never stop discovering.",
+      "buttonText": "Stay Curious"
+    },
+    {
+      "id": 38,
+      "heading": "Turn Pages, Not Backs",
+      "quote": "Every ending is a new chapter in disguise.",
+      "description": "Close the book on regret, and open the next volume of your journey.",
+      "buttonText": "Turn the Page"
+    },
+    {
+      "id": 39,
+      "heading": "Bend, Don’t Break",
+      "quote": "Resilience is the art of bouncing forward, not just back.",
+      "description": "Flexibility in hardship turns obstacles into opportunities.",
+      "buttonText": "Stay Resilient"
+    },
+    {
+      "id": 40,
+      "heading": "Silence the Noise",
+      "quote": "The loudest voice should be your own.",
+      "description": "Don’t let others’ opinions drown out your inner truth.",
+      "buttonText": "Listen Within"
+    },
+    {
+      "id": 41,
+      "heading": "Sow Generosity",
+      "quote": "The seeds of kindness bloom into legacies.",
+      "description": "Give freely, and watch the world flourish around you.",
+      "buttonText": "Spread Kindness"
+    },
+    {
+      "id": 42,
+      "heading": "Chisel Your Legacy",
+      "quote": "Legacies aren’t inherited—they’re carved through action.",
+      "description": "Every day is a chance to sculpt a life worth remembering.",
+      "buttonText": "Carve Your Path"
+    },
+    {
+      "id": 43,
+      "heading": "Conquer Complacency",
+      "quote": "Comfort zones are beautiful prisons.",
+      "description": "Break free from routine, and embrace the thrill of growth.",
+      "buttonText": "Escape Routine"
+    },
+    {
+      "id": 44,
+      "heading": "Balance the Scales",
+      "quote": "A life well-lived balances ambition with gratitude.",
+      "description": "Chase dreams, but never forget to cherish the present.",
+      "buttonText": "Find Balance"
+    },
+    {
+      "id": 45,
+      "heading": "Spark Innovation",
+      "quote": "Creativity is intelligence having fun.",
+      "description": "The world needs your unique ideas—dare to think differently.",
+      "buttonText": "Innovate Now"
+    },
+    {
+      "id": 46,
+      "heading": "Walk with Purpose",
+      "quote": "A wandering foot finds no path, but a focused mind creates one.",
+      "description": "Direction beats speed every time. Walk with intention.",
+      "buttonText": "Focus Forward"
+    },
+    {
+      "id": 47,
+      "heading": "Unplug to Recharge",
+      "quote": "Stillness is the soil where clarity grows.",
+      "description": "Pause, breathe, and return to your mission renewed.",
+      "buttonText": "Recharge Now"
+    },
+    {
+      "id": 48,
+      "heading": "Eyes on the Horizon",
+      "quote": "Don’t let today’s clouds block tomorrow’s sunrise.",
+      "description": "Keep your vision clear, and your future bright.",
+      "buttonText": "Stay Visionary"
+    },
+    {
+      "id": 49,
+      "heading": "Rewrite Rules",
+      "quote": "Tradition is a guide, not a jailer.",
+      "description": "Innovate boldly, even if it means redrawing the map.",
+      "buttonText": "Challenge Norms"
+    },
+    {
+      "id": 50,
+      "heading": "Grit & Grace",
+      "quote": "Grit gets you to the top; grace keeps you there.",
+      "description": "Combine relentless effort with humble wisdom.",
+      "buttonText": "Persist Elegantly"
+    },
+    {
+      "id": 51,
+      "heading": "Dance in the Rain",
+      "quote": "Life isn’t about waiting for the storm to pass—it’s about dancing in the rain.",
+      "description": "Find joy even in adversity. Your attitude is your umbrella.",
+      "buttonText": "Dance Freely"
+    },
+    {
+      "id": 52,
+      "heading": "Craft Your Crown",
+      "quote": "Royalty isn’t born—it’s built through relentless self-belief.",
+      "description": "You are the architect of your own greatness.",
+      "buttonText": "Build Greatness"
+    },
+    {
+      "id": 53,
+      "heading": "Silence = Power",
+      "quote": "In silence, the soul finds its loudest voice.",
+      "description": "Sometimes the deepest wisdom comes from quiet reflection.",
+      "buttonText": "Reflect Deeply"
+    },
+    {
+      "id": 54,
+      "heading": "Bridge the Gap",
+      "quote": "Empathy turns strangers into allies.",
+      "description": "Understand first, act second. Connection heals divides.",
+      "buttonText": "Connect Now"
+    },
+    {
+      "id": 55,
+      "heading": "Evolve or Repeat",
+      "quote": "Growth demands change; stagnation invites regret.",
+      "description": "Choose evolution, and leave the past where it belongs.",
+      "buttonText": "Evolve Today"
+    },
+    {
+      "id": 56,
+      "heading": "Harvest Habits",
+      "quote": "Sow a habit, reap a destiny.",
+      "description": "Small daily disciplines compound into extraordinary results.",
+      "buttonText": "Build Habits"
+    },
+    {
+      "id": 57,
+      "heading": "Unlock Curiosity",
+      "quote": "The day you stop asking ‘why’ is the day you stop growing.",
+      "description": "Curiosity fuels innovation. Never stop questioning.",
+      "buttonText": "Stay Curious"
+    },
+    {
+      "id": 58,
+      "heading": "Radiate Energy",
+      "quote": "Your energy introduces you before you speak.",
+      "description": "Positivity is a magnet—attract greatness with your vibe.",
+      "buttonText": "Be Radiant"
+    },
+    {
+      "id": 59,
+      "heading": "Map the Unknown",
+      "quote": "Adventure begins where the plan ends.",
+      "description": "Embrace uncertainty—it’s where magic happens.",
+      "buttonText": "Explore Boldly"
+    },
+    {
+      "id": 60,
+      "heading": "Simplify to Amplify",
+      "quote": "Less clutter, more clarity. Less noise, more music.",
+      "description": "Simplicity isn’t about having little—it’s about making room for what matters.",
+      "buttonText": "Simplify Life"
+    },
+    {
+      "id": 61,
+      "heading": "Weather the Storm",
+      "quote": "A ship in harbor is safe, but that’s not what ships are built for.",
+      "description": "Risk is the price of glory. Set sail and brave the waves.",
+      "buttonText": "Set Sail"
+    },
+    {
+      "id": 62,
+      "heading": "Roots & Wings",
+      "quote": "Strong roots anchor; strong wings liberate.",
+      "description": "Honor your past, but never let it clip your wings.",
+      "buttonText": "Soar Higher"
+    },
+    {
+      "id": 63,
+      "heading": "Mend the Cracks",
+      "quote": "Brokenness is where the light enters.",
+      "description": "Your flaws are the foundation for growth. Embrace them.",
+      "buttonText": "Embrace Flaws"
+    },
+    {
+      "id": 64,
+      "heading": "Hustle with Heart",
+      "quote": "Work hard in silence; let success make the noise.",
+      "description": "True grind is quiet, relentless, and self-aware.",
+      "buttonText": "Hustle Quietly"
+    },
+    {
+      "id": 65,
+      "heading": "Rewrite Fear",
+      "quote": "Fear is a story you tell yourself. Rewrite the narrative.",
+      "description": "Turn ‘What if I fail?’ into ‘What if I fly?’",
+      "buttonText": "Rewrite Now"
+    },
+    {
+      "id": 66,
+      "heading": "Echoes of Effort",
+      "quote": "What you do today echoes in eternity.",
+      "description": "Every action ripples through time. Make yours count.",
+      "buttonText": "Act Meaningfully"
+    },
+    {
+      "id": 67,
+      "heading": "Fertilize Failure",
+      "quote": "Failures are fertilizers for success.",
+      "description": "Nurture your setbacks—they’ll bloom into wisdom.",
+      "buttonText": "Grow from Loss"
+    },
+    {
+      "id": 68,
+      "heading": "Become Unstoppable",
+      "quote": "Obstacles are detours in the right direction.",
+      "description": "When you hit a wall, build a door.",
+      "buttonText": "Break Through"
+    },
+    {
+      "id": 69,
+      "heading": "Mind Over Matter",
+      "quote": "If the mind can conceive it, the body can achieve it.",
+      "description": "Your greatest tool is your mindset. Sharpen it daily.",
+      "buttonText": "Train Your Mind"
+    },
+    {
+      "id": 70,
+      "heading": "Leave Footprints",
+      "quote": "Walk so others can follow, but run so they’re inspired to lead.",
+      "description": "Your journey isn’t just for you—it’s a blueprint for others.",
+      "buttonText": "Inspire Others"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+    "customers": [
+        {
+            "place": "Noney",
+            "customerCount": 25
+        },
+        {
+            "place": "Khumji",
+            "customerCount": 1
+        },
+        {
+            "place": "TML",
+            "customerCount": 0
+        }
+    ]
+}
