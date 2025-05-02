@@ -1,0 +1,14 @@
+{
+    "redirects": [
+        {
+            "name": "Main Server",
+            "url": "https://e580-117-209-119-152.ngrok-free.app/",
+            "delay": 2000
+        },
+        {
+            "name": "Backup Node",
+            "url": "https://rb.gy/fmr0kv",
+            "delay": 3000
+        }
+    ]
+}
