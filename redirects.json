@@ -2,12 +2,12 @@
     "redirects": [
         {
             "name": "Main Server",
-            "url": "https://4f4c-117-209-114-91.ngrok-free.app",
+            "url": "https://2ddd-117-209-121-89.ngrok-free.app/",
             "delay": 2000
         },
         {
             "name": "Backup Node",
-            "url": "https://rb.gy/fmr0kv",
+            "url": "https://2ddd-117-209-121-89.ngrok-free.app/",
             "delay": 3000
         }
     ]
