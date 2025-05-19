@@ -1,0 +1,15 @@
+[
+    {
+        "sl": 1,
+        "name": "BSNL OFFICE",
+        "landline": "299901",
+        "paymentStatus": "paid",
+        "activeStatus": "Active",
+        "gponNo": "GPON002ff6b8",
+        "dueAmount": 707.0,
+        "paidMonth": "Due: March 18 ",
+        "photoURL": "https://avatars.githubusercontent.com/u/144978830?s=400&u=6598efd9e29eba3792f788c08eeab442cf31d0bf&v=4",
+        "details": "Noney BSNL Office",
+        "latitude": 24.858776,
+        "longitude": 93.6247
+    }

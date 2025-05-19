@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>GD ENT. BSNL</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="static/CSS/animate.css">
+    <link rel="stylesheet" href="static/CSS/clock.css">
+    <link rel="stylesheet" href="static/CSS/header.css">
+    <link rel="stylesheet" href="static/CSS/loader.css">
+    <link rel="stylesheet" href="static/CSS/main.css">
+    <link rel="stylesheet" href="static/CSS/navbut.css">
+    <link rel="stylesheet" href="static/CSS/notice.css">
+    <link rel="stylesheet" href="static/CSS/services.css">
+    <link rel="stylesheet" href="static/CSS/region.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="https://i.postimg.cc/MTzjJM7M/GH.png" type="image/x-icon">
+    <script src="static/JS/security.js"></script>
+    <script src="static/JS/loader.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKs5U4IsDbcQyq19zi9orfFoeTnewgeIY&libraries=drawing,places,geometry"></script>
+
+</head>
+<style>
+    .separator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    background-color: transparent;
+    padding: 0;
+    }
+
+.separator img {
+    width: 35%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    pointer-events: none;
+    cursor: none;
+}
+.header-card {
+    background: radial-gradient(circle, #ffffff8e, #ffbb0000); /* Deep space gradient */
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 1px 2px rgba(255, 255, 255, 0.1);
+    max-width: 550px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.header-card h2 {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    background: radial-gradient(circle, #ff7301, #0059ff); /* Gradient for text */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: pulsea 3s infinite ease-in-out; /* Applies the pulse animation */
+}
+
+/* Keyframes for the pulse effect */
+@keyframes pulsea {
+  0%, 100% {
+      transform: scale(1); /* Normal size */
+      opacity: 1; /* Fully visible */
+  }
+  50% {
+      transform: scale(1.1); /* Slightly larger */
+      opacity: 0.8; /* Slightly faded */
+  }
+}
+
+
+.header-card p {
+    font-size: 18px;
+    line-height: 1.5;
+    font-weight: 600;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #ff6600, #003cff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+#map, #map1{
+      width: 100%;
+      height: 500px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      cursor: none;
+    }
+    .cookie-popup {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 600px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    z-index: 9999;
+    display: none; /* Important: start hidden */
+}
+
+.cookie-content {
+    text-align: center;
+}
+
+.cookie-buttons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.cookie-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.cookie-btn.accept {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.cookie-btn.necessary {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+@media (max-width: 600px) {
+    .cookie-buttons {
+        flex-direction: column;
+    }
+    
+    .cookie-popup {
+        width: 95%;
+    }
+}
+</style>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container header-content">
+            <h1 >bharat fibre broadband</h1>
+            <div class="separator">
+                <img src="static/icon/bsnl.min.png" alt="bsnl-logo" unag class="separator-img"> 
+            </div>
+            <div class="header-card">
+                <h2>GD Ent. - EN2MNP 
+                </h2>
+                <p>Your Reliable & Fast Internet Provider</p>
+            </div>
+        </div>
+    </header>
+    <!-- Navigation Bar -->
+    <button class="w3-button w3-xlarge w3-teal" id="fixbut" onclick="w3_open()">☰ Menu</button>
+    <script src="static/JS/main.js"></script>
+
+    <!-- Sidebar -->
+    <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
+        <button onclick="w3_close()" class="w3-bar-item w3-large" id="close">Close &times;</button>
+        <a href="#" class="w3-bar-item w3-button">Home</a>
+        <a href="#regionTable" class="w3-bar-item w3-button">Regions</a>
+        <a href="#notice" class="w3-bar-item w3-button">Notice</a>
+        <a href="#why-choose" class="w3-bar-item w3-button">Why Choose Us</a>
+        <a href="#plans" class="w3-bar-item w3-button">Plans</a>
+        <a href="#contact" class="w3-bar-item w3-button">Contact</a>
+        <a href="customer.html" class="w3-bar-item w3-button" target="_blank">Customer's</a>
+        <a href="OLT.html" target="_blank" class="w3-bar-item w3-button" >Admin</a>
+        <a href="help.html" target="_blank" class="w3-bar-item w3-button">Help</a>
+    </div>
+
+    <!-- Main Section (Intro) -->
+    <section id="home" class="intro">
+        <div class="container intro-content">
+            <h3 class="animated-header">Welcome to gdent. bsnl </h3>
+            <p>
+                <b>Your trusted partner for high-speed internet connectivity. Whether you're streaming, gaming, working from home, or simply browsing, we provide seamless internet solutions tailored to your needs.</b>
+                <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                    <h2 style="color: #2c3e50;">Why Choose GD Ent. BSNL Wi-Fi?</h2>
+                    <div style="margin-bottom: 10px; display: flex; align-items: center;">
+                        <span style="margin-right: 10px; color: #27ae60;">✓</span>
+                        <strong>Fast Speeds</strong> – From <span style="background-color: #e3f2fd; padding: 2px 5px; border-radius: 3px;">30 Mbps to 300 Mbps</span> for smooth browsing and HD streaming
+                    </div>
+                    <div style="margin-bottom: 10px; display: flex; align-items: center;">
+                        <span style="margin-right: 10px; color: #27ae60;">✓</span>
+                        <strong>5-6 Days Battery Backup</strong> – Uninterrupted connectivity during power outages
+                    </div>
+                    <div style="margin-bottom: 10px; display: flex; align-items: center;">
+                        <span style="margin-right: 10px; color: #27ae60;">✓</span>
+                        <strong>Wide Coverage</strong> – Available in multiple regions with expanding networks
+                    </div>
+                    <div style="margin-bottom: 10px; display: flex; align-items: center;">
+                        <span style="margin-right: 10px; color: #27ae60;">✓</span>
+                        <strong>Affordable Plans</strong> – Competitive pricing with flexible options
+                    </div>
+                    <div style="margin-bottom: 10px; display: flex; align-items: center;">
+                        <span style="margin-right: 10px; color: #27ae60;">✓</span>
+                        <strong>24/7 Support</strong> – Dedicated customer service for uninterrupted connectivity
+                    </div>
+                </div>
+
+                <div style="background-color: #fff8e1; padding: 15px; border-left: 4px solid #ffc107; margin: 20px 0;">
+                    <h3 style="color: #2c3e50;">Things to Keep in Mind</h3>
+                    <p>While we strive to provide the best service, customers in some areas may occasionally experience:</p>
+                    <div style="display: flex; margin-bottom: 8px;">
+                        <span style="margin-right: 10px; color: #f39c12;">•</span>
+                        <strong>Internet fluctuations</strong> due to weather conditions or network congestion
+                    </div>
+                    <div style="display: flex; margin-bottom: 8px;">
+                        <span style="margin-right: 10px; color: #f39c12;">•</span>
+                        <strong>Temporary downtime </strong> during maintenance or upgrades
+                    </div>
+                    <div style="display: flex; margin-bottom: 8px;">
+                        <span style="margin-right: 10px; color: #f39c12;">•</span>
+                        <strong>Speed variations</strong> during peak usage hours
+                    </div>
+                    <p>Our advanced battery backup systems ensure your connection stays active for <span style="background-color: #e3f2fd; padding: 2px 5px; border-radius: 3px;">5-6 days during power cuts</span>, giving you peace of mind during outages.</p>
+                    <div style="display: flex; margin-bottom: 8px;">
+                        <span style="margin-right: 10px; color: #f39c12;">•</span>
+                        <strong>Need for local power backup</strong> - While our central equipment has battery backup, your modem will need separate power during outages
+                    </div>
+                </div>
+
+                <h2 style="color: #2c3e50;">How to Check Your Customer Profile</h2>
+                <p>Existing customers can easily access their profile using Landline no. <b>(299901)</b> and check their payment status:</p>
+                <ol>
+                    <li>Go to <strong>Menu</strong> on our website/app</li>
+                    <li>Select <strong>Customer Profile</strong></li>
+                    <li>View your <strong>billing details, usage statistics <b>(deverloping)</b>, and plan status<b>(deverloping)</b></strong></li>
+                </ol>
+
+                <div style="background-color: #3498db; color: white; padding: 20px; text-align: center; border-radius: 8px; margin: 30px 0;">
+                    <h2 style="color: white;">Get Connected Today!</h2>
+                    <p>Experience <strong>GD Ent. BSNL Wi-Fi</strong> - now with extended battery backup for uninterrupted service!</p>
+                    <p>📞 <strong>Contact Us:</strong> <a href="tel:+9184150288288">8415028828 / 8974206458</a><br>
+                    🌐 <strong>Visit:</strong> <a href="https://portal2.bsnl.in/myportal/tariffs.do?FTTH_BROADBAND_COMBO">Plans</a><br>
+                    📧 <strong>Email:</strong> <a href="mailto:gdentbsnl@gmail.com">gdentbsnl@gmail.com</a></p>
+                </div>
+
+                <div style="text-align: center; margin-top: 40px; color: #7f8c8d; font-size: 14px;">
+                    <p><strong>#GDEnt #BSNLWiFi #FastInternet #UnlimitedData #BatteryBackup #StayConnected</strong></p>
+                </div>
+            </p>
+            <hr>
+            <p class="animated-header">A thought just for you</p>
+            <div id="welcome-container" class="welcome">
+                <h1>
+                    <div class="loader"></div>
+                </h1>
+                <p>Please wait while we load the content.
+                    <div class="loader"></div>
+                </p>
+            </div>
+              <script>
+                // Fetch and load content dynamically
+                fetch('https://raw.githubusercontent.com/Guang84/myweb-link/refs/heads/main/db/Json/welcome.json')
+                  .then(response => {
+                    if (!response.ok) {
+                      throw new Error('Failed to load JSON file');
+                    }
+                    return response.json();
+                  })
+                  .then(data => {
+                    const welcomeSections = data.welcomeSections;
+              
+                    // Select a random section from the array
+                    const randomIndex = Math.floor(Math.random() * welcomeSections.length);
+                    const randomSection = welcomeSections[randomIndex];
+              
+                    // Dynamically update the welcome section
+                    const welcomeContainer = document.getElementById('welcome-container');
+                    welcomeContainer.innerHTML = `
+                      <h1>${randomSection.heading}</h1>
+                      <blockquote>"${randomSection.quote}"</blockquote>
+                      <p>${randomSection.description}</p>
+                    `;
+                  })
+                  .catch(() => {
+                    console.error('An error occurred while fetching the JSON.');
+                  });
+              </script>
+              
+               <center>
+            <!-- Region Support Table -->
+            <div class="instruction-item" id="regionTable">
+                <h3 class="animated-header">Supported Regions</h3>
+                <p>Our services are available in the following regions/districts:</p>
+                <table class="support-table" id="regionTable">
+                    <thead>
+                        <tr>
+                            <th>Region/District</th>
+                            <th>Supported Plans</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tdata">
+                        <!-- Region Data-->
+                    </tbody>
+                </table>
+            </div>
+            <br>
+            <b class="animated-header">Noney</b>
+
+            <div id="map" style="height: 500px; width: 100%;"></div>
+            <br>
+            <b class="animated-header">Tamenglong</b>
+
+            <div id="map1" style="width: 100%; height: 500px;"></div> <!-- Second Map -->
+            <div id="load-info-map1"></div>
+                <script src="./static/JS/map.js"></script>
+            </div>
+            </center>
+        </div>
+    </section>
+    <center>
+        <div id="customerCountContainer">
+            <p id="description" class="animated-header">Total number of customers</p>
+
+            <p id="customerCount" > </p>
+        </div>
+    
+    </center>
+    <script>
+        const apiUrl = 'db/Json/customerscount.json'; // Path to your JSON file
+        function fetchCustomerCount() {
+            fetch(apiUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const customerCount = data.customers;
+                    let customerCountText = "";
+
+                    // Iterate through the customer count for each place and display
+                    customerCount.forEach(place => {
+                        customerCountText += `<p><strong>${place.place}:</strong> ${place.customerCount} customers</p>`;
+                    });
+
+                    // Insert the customer count data into the HTML element with id "description"
+                    document.getElementById('description').innerHTML = customerCountText;
+                })
+                .catch(error => {
+                    console.error('Error fetching customer count:', error);
+                    document.getElementById('description').innerHTML = "Error fetching data";
+                });
+        }
+
+        // Fetch customer count data when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchCustomerCount();  // Initial fetch on load
+        });
+    </script>
+    
+
+    <iframe 
+        src="https://free.timeanddate.com/clock/i9p038sl/n1792/tlin/fn17/fs9/fcf90/tct/pct/ahr/avt/ftbu/tt0/tw1/th2/tb4" 
+        frameborder="0"
+        width="112"
+        height="28"
+        allowtransparency="true"
+        id="floating-clock">
+    </iframe>
+    <hr>
+
+    <div class="notice" id="notice">
+        <h2 >Notice</h2> 
+        <div class="loader"></div>
+    </div>
+
+    <!-- Why Choose Us Section -->
+    <section id="why-choose" class="why-choose">
+        <div class="container">
+            <h2 class="animated-header">Why Choose BSNL Wi-Fi by GD Ent?</h2>
+            <div class="features">
+                <div class="feature-item">
+                    <h3>Fast Speeds</h3>
+                    <p>Enjoy seamless browsing, streaming, and gaming with speeds ranging from 30 Mbps to 300 Mbps.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Reliable Connectivity</h3>
+                    <p>Say goodbye to buffering and interruptions with our high-quality Wi-Fi network.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Affordable Plans</h3>
+                    <p>We offer flexible plans that suit your needs, without any hidden costs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- charges and image -->
+    <div class="service-container" id="service">
+        <div class="service-header">
+            <h2 class="animated-header">Our Services</h2>
+            <p>Explore the range of services we offer to meet your connectivity needs.</p>
+        </div>
+
+        <!-- Placeholder for services -->
+        <div id="services-list"></div>
+
+        <div class="service-footer">
+            <p>Contact us for more details or to schedule a setup appointment.</p>
+            <a href="#contact" class="contact-button">Contact Us</a>
+        </div>
+        <script src="static/JS/services.js"></script> <!-- Link to JavaScript file -->
+
+    </div>
+    
+    <center>
+
+        <iframe 
+        id="plans"
+        src="plans.html" 
+        class="planframe" 
+        style="border: none; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: all 0.3s ease-in-out; margin: 0 auto;">
+    </iframe>
+    <p style="font-family: 'Times New Roman', Times, serif; font-size: x-large; text-transform: uppercase; text-decoration: underline; font-weight: 600; color: rgba(184, 0, 0, 0.877); text-align: center;">
+        <a class="animated-header" href="https://portal2.bsnl.in/myportal/tariffs.do?FTTH_BROADBAND_COMBO" target="_blank">Click Here To Find the Best Plan for You</a>
+    </p>
+    </center>
+    <!-- Contact & Feedback Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="animated-header">Contact Us</h2>
+            <div class="contact-info">
+                <!-- WhatsApp Link -->
+                <div class="contact-item">
+                    <a href="https://wa.me/+918415028828" target="_blank">
+                        <img src="https://cdn-icons-png.flaticon.com/128/3536/3536445.png" alt="WhatsApp" class="contact-icon">
+                        <span>Whatsapp: +91 8415028828</span>
+                    </a>
+                </div>
+
+                <!-- Call Link -->
+                <div class="contact-item">
+                    <a href="tel:+9184150288288">
+                        <img src="https://cdn-icons-png.flaticon.com/128/16076/16076069.png" alt="Call" class="contact-icon">
+                        <span>Call: +91 8415028828</span>
+                    </a>
+                    <hr>
+                    <a href="tel:+918974206458">
+                        <img src="https://cdn-icons-png.flaticon.com/128/16076/16076069.png" alt="Call" class="contact-icon">
+                        <span>Call: +91 8974206458</span>
+                    </a>
+                </div>
+
+                <!-- Email Link -->
+                <div class="contact-item">
+                    <a href="mailto:gdentbsnl@gmail.com">
+                        <img src="https://cdn-icons-png.flaticon.com/128/15047/15047587.png" alt="Email" class="contact-icon">
+                        <span>Email: gdentbsnl@gmail.com</span>
+                    </a>
+                </div>
+            </div>
+            <hr>
+            <div class="feedback">
+                <h2 class="animated-header">Feedback </h2>
+                <form id="commentForm" method="get">
+                    <div id="responseMessage"></div> <!-- Display success/error message -->
+                    <input type="email" id="email" name="email" placeholder="Your email" required>
+                    <textarea id="comtext" name="comtext" placeholder="Write your message here" required></textarea>
+                    <button type="submit" class="sub-btn">Submit</button>
+                </form>                
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2023 BSNL EN2MNP_GDENT All Rights Reserved.</p>
+            <p>
+                <a style="color: #ffffff;padding: 3px; font-weight: 600; text-decoration: underline;;"
+                 href="https://github.com/Guang84" target="_blank">Developer</a>
+            </p>
+            <p>
+                <a href="https://www.termsfeed.com/live/e0da6952-4929-493e-b533-6bbca5763ab1">privacy-policy</a>
+            </p>
+            
+            <div class="supportus">
+                <div style="max-width: 1200px; margin: 0 auto; padding: 2rem; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                    <h2 style="text-align: center; color: #ffffff; margin-bottom: 1.5rem; font-size: 2rem;">SUPPORT US</h2>
+                    <p style="text-align: center; color: #6c757d; margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">Your support helps us continue developing and improving our services.</p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                      <div style="background: white; border-radius: 8px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                        <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                          <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="Ethereum" style="width: 40px; height: 40px; margin-right: 1rem;">
+                          <h3 style="font-size: 1.2rem; font-weight: 600;">Ethereum (ETH)</h3>
+                        </div>
+                        <p style="color: #6c757d; margin-bottom: 1rem;">Send ETH (BNB Smart Chain, BEP20)</p>
+                        <div style="background: #0080ff; padding: 0.8rem; border-radius: 5px; font-family: monospace; word-break: break-all; margin-bottom: 1rem;">0xbcb7e95eb6c9da09a20b43118b22c41ca1f29ff8</div>
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=0xbcb7e95eb6c9da09a20b43118b22c41ca1f29ff8" alt="ETH QR" style="display: block; margin: 0.5rem auto; width: 120px;">
+                        <button onclick="copyToClipboard('0x71C7656EC7ab88b098defB751B7401B5f6d8976F')" style="background: #4a6bff; color: white; border: none; padding: 0.6rem 1rem; border-radius: 5px; cursor: pointer; width: 100%;">Copy Address</button>
+                      </div>
+                      
+                      <div style="background: white; border-radius: 8px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                        <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                          <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin" style="width: 40px; height: 40px; margin-right: 1rem;">
+                          <h3 style="font-size: 1.2rem; font-weight: 600;">Bitcoin (BTC)</h3>
+                        </div>
+                        <p style="color: #6c757d; margin-bottom: 1rem;">Send BTC to our address (BNB Smart Chain, BEP20)</p>
+                        <div style="background: #0080ff; padding: 0.8rem; border-radius: 5px; font-family: monospace; word-break: break-all; margin-bottom: 1rem;">0xbcb7e95eb6c9da09a20b43118b22c41ca1f29ff8</div>
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=0xbcb7e95eb6c9da09a20b43118b22c41ca1f29ff8" alt="BTC QR" style="display: block; margin: 0.5rem auto; width: 120px;">
+                        <button onclick="copyToClipboard('3FZbgi29cpjq2GjdwV8eyHuJJnkLtktZc5')" style="background: #4a6bff; color: white; border: none; padding: 0.6rem 1rem; border-radius: 5px; cursor: pointer; width: 100%;">Copy Address</button>
+                      </div>
+                      
+                      <div style="background: white; border-radius: 8px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                        <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Pi_logo.svg/1200px-Pi_logo.svg.png" alt="Pi Network" style="width: 40px; height: 40px; margin-right: 1rem;">
+                          <h3 style="font-size: 1.2rem; font-weight: 600;">Pi Network</h3>
+                        </div>
+                        <p style="color: #6c757d; margin-bottom: 1rem;">Send Pi coins to our address</p>
+                    
+                        <div style="background: #0080ff; padding: 0.8rem; border-radius: 5px; font-family: monospace; word-break: break-all; margin-bottom: 1rem;">MDFNWH6ZFJVHJDLBMNOUT35X4EEKQVJAO3ZDL4NL7VQJLC4PJOQFWAAAAAATZPY26FPKM</div>
+                        <button onclick="copyToClipboard('@SupportProject')" style="background: #4a6bff; color: white; border: none; padding: 0.6rem 1rem; border-radius: 5px; cursor: pointer; width: 100%;">Copy address</button>
+                      </div>
+                    </div>
+                    <p style="text-align: center; color: #6c757d; margin-top: 2rem; font-style: italic;">Thank you for your support!</p>
+                  </div>
+                  
+                  <script>
+                  function copyToClipboard(text) {
+                    navigator.clipboard.writeText(text).then(function() {
+                      alert('Copied to clipboard: ' + text);
+                    }, function(err) {
+                      console.error('Could not copy text: ', err);
+                    });
+                  }
+                  </script>
+                  
+
+            </div>
+        </div>
+    </footer>
+    <script src="static/JS/regions.js" defer></script>
+    <script src="static/JS/plans.js" defer></script>
+    <script src="static/JS/notice.js"></script>
+    <div id="cookieConsentPopup" class="cookie-popup" style="display: none;">
+        <div class="cookie-content">
+            <h3>We Value Your Privacy</h3>
+            <p>We use cookies to enhance your browsing experience. 
+               <a href="https://www.termsfeed.com/live/e0da6952-4929-493e-b533-6bbca5763ab1" target="_blank">Privacy Policy</a> | 
+               <a href="https://www.termsfeed.com/live/e0da6952-4929-493e-b533-6bbca5763ab1" target="_blank">Terms</a>
+            </p>
+            <div class="cookie-buttons">
+                <button id="acceptAllCookies" class="cookie-btn accept">Accept All</button>
+                <button id="acceptNecessaryCookies" class="cookie-btn necessary">Necessary Only</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/static/JS/main.js"></script>
+</body>
+</html>

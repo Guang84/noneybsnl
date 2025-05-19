@@ -1,0 +1,12 @@
+#floating-clock {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 1000;
+  width: 112px;
+  height: 28px;
+  border: none;
+  background: none;
+  pointer-events: none;
+  cursor: default;
+}

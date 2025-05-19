@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Search</title>
+    <link rel="stylesheet" href="static/CSS/customer.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/framer-motion/10.12.0/framer-motion.umd.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKs5U4IsDbcQyq19zi9orfFoeTnewgeIY&libraries=drawing,places,geometry"></script>
+
+    <link rel="icon" href="https://i.postimg.cc/MTzjJM7M/GH.png" type="image/x-icon">
+</head>
+<body>
+    <header class="header">
+        <h1>Customer Search</h1>
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Enter Landline No.">
+            <button id="search-button">Search</button>
+        </div>
+    </header>
+
+    <main>
+        <section id="customer-details" class="hidden">
+            <h2>Customer Information</h2>
+            <div id="customer-name"></div>
+            <div id="customer-about"></div>
+            <div id="customer-details-info"></div>
+            <div id="customer-photo"></div>
+            <table id="customer-table">
+                <thead>
+                    <tr>
+                        <th>SL</th>
+                        <th>Name</th>
+                        <th>Landline No</th>
+                        <th>Payment Status</th>
+                        <th>Active Status</th>
+                        <th>GPON No</th>
+                        <th>Due Amount</th>
+                        <th>Paid Month</th>
+                    </tr>
+                </thead>
+                <tbody id="customer-table-body"></tbody>
+            </table>
+        </section>
+
+        <section id="instructions">
+            <p><strong>Instructions:</strong> Enter a customer's landline number (e.g., <b>299900</b>).</p>        </section>
+            <b style="color: #ff7301;">Noney</b>
+
+            <div id="map" style="height: 500px; width: 100%;"></div>
+            <div id="load-info-map1"></div>
+                <script src="./static/JS/map.js"></script>
+            </div>
+        <section id="gpon-list">
+            <h2>GPON List</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>SL</th>
+                        <th>GPON No</th>
+                        <th>Active Status</th>
+                    </tr>
+                </thead>
+                <tbody id="gpon-table-body">
+                </tbody>
+            </table>
+        </section>
+
+        <div id="no-data-message" class="hidden">No data found for the entered landline number.</div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    fetch('db/Json/noneycdata.json')
+        .then(response => {
+            if (!response.ok) throw new Error('Failed to fetch customer data');
+            return response.json();
+        })
+        .then(customers => {
+            displayGponList(customers);
+
+            document.getElementById('search-button').addEventListener('click', () => {
+                const searchInput = document.getElementById('search-input').value.trim();
+
+                if (!searchInput) {
+                    alert('Please enter a landline number.');
+                    return;
+                }
+
+                if (searchInput === '9612') {
+                    displayAllCustomers(customers);
+                } else {
+                    const customer = customers.find(c => c.landline === searchInput);
+                    if (customer) displayCustomerData(customer);
+                    else displayNoDataMessage();
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            displayNoDataMessage();
+        });
+});
+
+function displayGponList(customers) {
+    const tbody = document.getElementById('gpon-table-body');
+    tbody.innerHTML = customers.map((c, index) => `
+        <tr>
+            <td>${index + 1}</td>
+            <td>${c.gponNo}</td>
+            <td>${c.activeStatus}</td>
+        </tr>
+    `).join('');
+}
+
+function displayCustomerData(customer) {
+    document.getElementById('instructions').classList.add('hidden');
+    document.getElementById('customer-details').classList.remove('hidden');
+    document.getElementById('no-data-message').classList.add('hidden');
+
+    document.getElementById('customer-name').textContent = customer.name;
+    document.getElementById('customer-about').textContent = customer.about || 'No additional information.';
+    document.getElementById('customer-details-info').textContent = customer.details || 'Details not available.';
+    document.getElementById('customer-photo').innerHTML = `<img src="${customer.photoURL}" alt="${customer.name}" />`;
+
+    const tbody = document.getElementById('customer-table-body');
+    tbody.innerHTML = `
+        <tr>
+            <td>${customer.sl}</td>
+            <td>${customer.name}</td>
+            <td>${customer.landline}</td>
+            <td>${customer.paymentStatus}</td>
+            <td>${customer.activeStatus}</td>
+            <td>${customer.gponNo}</td>
+            <td>${customer.dueAmount}</td>
+            <td>${customer.paidMonth}</td>
+        </tr>
+    `;
+}
+
+function displayAllCustomers(customers) {
+    document.getElementById('instructions').classList.add('hidden');
+    document.getElementById('customer-details').classList.remove('hidden');
+    document.getElementById('no-data-message').classList.add('hidden');
+
+    const tbody = document.getElementById('customer-table-body');
+    tbody.innerHTML = customers.map(c => `
+        <tr>
+            <td>${c.sl}</td>
+            <td>${c.name}</td>
+            <td>${c.landline}</td>
+            <td>${c.paymentStatus}</td>
+            <td>${c.activeStatus}</td>
+            <td>${c.gponNo}</td>
+            <td>${c.dueAmount}</td>
+            <td>${c.paidMonth}</td>
+        </tr>
+    `).join('');
+}
+
+function displayNoDataMessage() {
+    document.getElementById('instructions').classList.add('hidden');
+    document.getElementById('customer-details').classList.add('hidden');
+    document.getElementById('no-data-message').classList.remove('hidden');
+}
+
+    </script>
+</body>
+</html>

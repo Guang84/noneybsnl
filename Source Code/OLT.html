@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - OLT Portal</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+c    <link rel="stylesheet" href="static/CSS/adminstyle.css">
+    <link rel="stylesheet" href="static/CSS/loader.css">
+</head>
+<body>
+    <!-- Security Code Modal -->
+    <div id="security-code-container" class="security-modal">
+        <div class="modal-content">
+            <header class="modal-header">
+                <h2><i class="fas fa-lock"></i> Security Code</h2>
+            </header>
+            <div class="modal-body">
+                <p>Please enter the security code to access this page:</p>
+                <input type="text" id="security-code-input" class="modal-input" placeholder="Enter code">
+                <button id="submit-code" class="modal-button"><i class="fas fa-check"></i> Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" style="display: none;">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <h1><i class="fas fa-tachometer-alt"></i> Admin Dashboard</h1>
+            <p>Welcome to the Admin Panel</p>
+        </header>
+
+        <!-- Floating Clock -->
+        <iframe 
+            src="https://free.timeanddate.com/clock/i9p038sl/n1792/tlin/fn17/fs9/fcf90/tct/pct/ahr/avt/ftbu/tt0/tw1/th2/tb4" 
+            frameborder="0"
+            width="112"
+            height="28"
+            allowtransparency="true"
+            id="floating-clock">
+        </iframe>
+
+        <!-- OLT Server Status Section -->
+        <main class="dashboard-main">
+            <section class="data-section">
+                <h2 class="section-title"><i class="fas fa-server"></i> OLT Server Status</h2>
+                <div id="olt-status-container" class="olt-status-container">
+                    <div class="loader"></div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Admin Tools Section -->
+        <div class="admin-tools">
+            <h3><i class="fas fa-tools"></i> Admin Tools</h3>
+            <ul class="tools-list">
+                <li><a href="NetVision/netvision.html" target="_self"><i class="fas fa-network-wired"></i> NetVision (FNMS)</a></li>
+                <li><a href="AMM_V1/" target="_self"><i class="fas fa-ruler"></i> Advance Map Measurement v1 (AMM v1)</a></li>
+                <li><a href="AMM_V2/" target="_self"><i class="fas fa-ruler"></i> Advance Map Measurement v2 (AMM v2)</a></li>
+                <li><a href="KYCL/index.html" target="_self"><i class="fas fa-ruler"></i> KYCL (Khow your Customer Location)</a></li>                
+                <li><a href="mailto:gdent@gmail.com"><i class="fas fa-envelope"></i> Contact via Gmail</a></li>
+                <li><a href="tel:+918415028828"><i class="fas fa-phone"></i> Call Dev</a></li>
+            </ul>
+        </div>
+
+        <!-- Footer -->
+        <footer class="dashboard-footer">
+            <p>&copy; 2024 EN2MNP_GDENT. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="static/JS/admin.js"></script>
+</body>
+</html>

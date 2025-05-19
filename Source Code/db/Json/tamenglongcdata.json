@@ -1,0 +1,31 @@
+[
+    {
+        "sl": 1,
+        "name": "BSNL OFFICE",
+        "landline": "0",
+        "paymentStatus": "paid",
+        "activeStatus": "inactive",
+        "gponNo": "NA",
+        "dueAmount": 0.0,
+        "paidMonth": "NA",
+        "photoURL": "https://avatars.githubusercontent.com/u/144978830?s=400&u=6598efd9e29eba3792f788c08eeab442cf31d0bf&v=4",
+        "details": "OFFICE",
+        "latitude": 24.989451,
+        "longitude":  93.504862
+    },
+    {
+        "sl": 1,
+        "name": "TML college",
+        "landline": "0",
+        "paymentStatus": "paid",
+        "activeStatus": "inactive",
+        "gponNo": "NA",
+        "dueAmount": 0.0,
+        "paidMonth": "NA",
+        "photoURL": "https://avatars.githubusercontent.com/u/144978830?s=400&u=6598efd9e29eba3792f788c08eeab442cf31d0bf&v=4",
+        "details": "Colege",
+        "latitude": 24.980807,
+        "longitude":  93.498771
+    }
+
+]

@@ -1,0 +1,474 @@
+{
+    "dcOffice": {
+        "name": "DC",
+        "latitude": 826529,
+        "longitude": 93636694
+    },
+    "joints": [ 
+        {
+            "name": "Joint 01",
+            "latitude": 827381,
+            "longitude": 93636826
+        },
+        {
+            "name": "Joint 1",
+            "latitude": 827190,
+            "longitude": 93637443
+        },
+        {
+            "name": "Joint 2",
+            "latitude": 841047,
+            "longitude": 93628546
+        },
+        {
+            "name": "Joint 3",
+            "latitude": 845795,
+            "longitude": 93627437
+        },
+        {
+            "name": "Joint 4",
+            "latitude": 849995,
+            "longitude": 936513
+        },
+        {
+            "name": "Joint 5",
+            "latitude": 85616,
+            "longitude": 93625559
+        }
+    ],
+    "olt": {
+        "name": "OLT Main",
+        "latitude": 858776,
+        "longitude": 9367
+    },
+    "splitters": [
+        {
+            "description": "PON1",
+            "splitter": "Splitter 01",
+            "latitude": 858398,
+            "longitude": 936355,
+            "customers": [
+                {
+                    "landline": "299950",
+                    "latitude": 858303,
+                    "longitude": 936167
+                },
+                {
+                    "landline": "299951",
+                    "latitude": 856931,
+                    "longitude": 936158
+                }
+            ]
+        },
+        {
+            "description": "PON1",
+            "splitter": "Splitter 1",
+            "latitude": 857558,
+            "longitude": 93623293,
+            "connectedTo": "Splitter 01",
+            "customers": [
+                {
+                    "landline": "299903",
+                    "latitude": 857558,
+                    "longitude": 93623239
+                },
+                {
+                    "landline": "299938",
+                    "latitude": 857189,
+                    "longitude": 93622623
+                }
+            ]
+        },
+        {
+            "description": "PON1",
+            "splitter": "Splitter 002",
+            "latitude": 858446,
+            "longitude": 93622836,
+            "connectedTo": "Splitter 01",
+            "customers": [
+                {
+                    "landline": "299952",
+                    "latitude": 858642, 
+                    "longitude": 93623588
+                }
+            ]
+        },
+        {
+            "splitter": "M Splitter 1",
+            "latitude": 858949,
+            "longitude": 93621834,
+            "connectedTo": "Splitter 002",
+            "customers": [
+                {
+                    "landline": "299942",
+                    "latitude": 859270,
+                    "longitude": 93622056
+                }
+            ]
+        },
+        {
+            "splitter": "Joint boxp1",
+            "latitude": 855367,
+            "longitude": 93622855,
+            "connectedTo": "Splitter 1"
+        },
+        {
+            "splitter": "Splitter 2",
+            "latitude": 8550376,
+            "longitude": 936227467,
+            "connectedTo": "Joint boxp1",
+            "customers": [
+                {
+                    "landline": "299914",
+                    "latitude": 8546479,
+                    "longitude": 936231149
+                }
+            ]
+        },
+        {
+            "splitter": "Joint box1",
+            "latitude": 851619,
+            "longitude": 93617925,
+            "connectedTo": "Splitter 2"
+        },
+        {
+            "splitter": "splitter 3",
+            "latitude": 850811,
+            "longitude": 93617064,
+            "connectedTo": "Joint box1",
+            "customers": [
+                {
+                    "landline": "299930",
+                    "latitude": 850767,
+                    "longitude": 93617374
+                }
+            ]
+        },
+        {
+            "splitter": "splitter 4",
+            "latitude": 848236,
+            "longitude": 93616053,
+            "connectedTo": "splitter 3",
+            "customers": [
+                {
+                    "landline": "299929",
+                    "latitude": 847868,
+                    "longitude": 936161
+                }
+            ]
+        },
+        {
+            "splitter": "splitter 5",
+            "latitude": 846020,
+            "longitude": 93614876,
+            "connectedTo": "splitter 4",
+            "customers": [
+                {
+                    "landline": "299929",
+                    "latitude": 846650,
+                    "longitude": 93614370
+                }
+            ]
+        },
+        {
+            "splitter": "Joint box2",
+            "latitude": 842880,
+            "longitude": 93615703,
+            "connectedTo": "splitter 5"
+        },
+        {
+            "splitter": "splitter 05",
+            "latitude": 8378,
+            "longitude": 93617211,
+            "connectedTo": "Joint box2",
+            "customers": [
+                {
+                    "landline": "299939",
+                    "latitude": 838115,
+                    "longitude": 93616549
+                }
+            ]
+        },
+        {
+            "splitter": "Joint box3",
+            "latitude": 834151,
+            "longitude": 93621003,
+            "connectedTo": "splitter 05"
+        },
+        {
+            "splitter": "splitter 6",
+            "latitude": 832662,
+            "longitude": 93622140,
+            "connectedTo": "Joint box3",
+            "customers": [
+                {
+                    "landline": "299935",
+                    "latitude": 831610,
+                    "longitude": 93621414
+                },
+                {
+                    "landline": "299934",
+                    "latitude": 831425,
+                    "longitude": 93621092
+                }
+            ]
+        },
+        {
+            "splitter": "splitter 7",
+            "latitude": 830570,
+            "longitude": 93621859,
+            "connectedTo": "splitter 6",
+            "customers": [
+                {
+                    "landline": "299932",
+                    "latitude": 830398,
+                    "longitude": 93621847
+                },
+                {
+                    "landline": "299931",
+                    "latitude": 829606,
+                    "longitude": 93622081
+                }
+            ]
+        },
+        {
+            "description": "PON2",
+            "splitter": "Splitter 8",
+            "latitude": 856642,
+            "longitude": 93625732,
+            "connectedTo": "Joint box31",
+            "customers": [
+                {
+                    "landline": "299910",
+                    "latitude": 856757,
+                    "longitude": 93625812
+                }
+            ]
+        },
+        {
+            "splitter": "Splitter 9",
+            "latitude": 855354,
+            "longitude": 936921,
+            "connectedTo": "Splitter 8",
+            "customers": [
+                {
+                    "landline": "299925",
+                    "latitude": 8550519,
+                    "longitude": 9368673
+                }
+            ]
+        },
+        {
+            "splitter": "Splitter 10",
+            "latitude": 853369,
+            "longitude": 93623998,
+            "connectedTo": "Splitter 9",
+            "customers": [
+                {
+                    "landline": "299915",
+                    "latitude": 853317,
+                    "longitude": 93623655
+                },
+                {
+                    "landline": "299913",
+                    "latitude": 853183,
+                    "longitude": 93623317
+                }
+            ]
+        },
+        {
+            "splitter": "Splitter 11",
+            "latitude": 8539,
+            "longitude": 93623858,
+            "connectedTo": "Splitter 10",
+            "customers": [
+                {
+                    "landline": "299906",
+                    "latitude": 852507,
+                    "longitude": 936233
+                },
+                {
+                    "landline": "PNB",
+                    "latitude": 852710,
+                    "longitude": 936157
+                }
+            ]
+        },
+        {
+            "splitter": "Splitter 12",
+            "latitude": 851151,
+            "longitude": 93623757,
+            "connectedTo": "Splitter 11",
+            "customers": [
+                {
+                    "landline": "299919",
+                    "latitude": 851097,
+                    "longitude": 93623596
+                }
+            ]
+        },
+        {
+            "description": "PON3",
+            "splitter": "Joint box31",
+            "latitude": 858238,
+            "longitude": 93626099
+        },
+        {
+            "splitter": "Post 1",
+            "latitude": 858127,
+            "longitude": 93626343,
+            "connectedTo": "Joint box31",
+            "customers": [
+                {
+                    "landline": "299927",
+                    "latitude": 858391,
+                    "longitude": 93626080
+                }
+            ]
+        },
+        {
+            "splitter": "splitter 31",
+            "latitude": 859275,
+            "longitude": 93625196,
+            "connectedTo": "Joint box31",
+            "customers": [
+                {
+                    "landline": "299902",
+                    "latitude": 859347,
+                    "longitude": 93625040
+                },
+                {
+                    "landline": "299904",
+                    "latitude": 859281,
+                    "longitude": 93625128
+                },
+                {
+                    "landline": "299905",
+                    "latitude": 8593,
+                    "longitude": 93625280
+                },
+                {
+                    "landline": "299949",
+                    "latitude": 859344,
+                    "longitude": 93625334
+                }
+            ]
+        },
+        {
+            "splitter": "splitter 32",
+            "latitude": 859367,
+            "longitude": 936433,
+            "connectedTo": "splitter 31",
+            "customers": [
+                {
+                    "landline": "299909",
+                    "latitude": 859444,
+                    "longitude": 936751
+                },
+                {
+                    "landline": "299940",
+                    "latitude": 859254,
+                    "longitude": 93625515
+                },
+                {
+                    "landline": "MRB Leaseline",
+                    "latitude": 859211,
+                    "longitude": 93625534
+                },
+                {
+                    "landline": "299908",
+                    "latitude": 859225,
+                    "longitude": 936419
+                },
+                {
+                    "landline": "299941",
+                    "latitude": 859172,
+                    "longitude": 936797
+                },
+                {
+                    "landline": "299948",
+                    "latitude": 859380,
+                    "longitude": 93623744
+                }
+            ]
+        },
+        {
+            "splitter": "splitter 33",
+            "latitude": 859788,
+            "longitude": 93623606,
+            "connectedTo": "splitter 32",
+            "customers": [
+                {
+                    "landline": "299920",
+                    "latitude": 859635,
+                    "longitude": 93623671
+                },
+                {
+                    "landline": "299918",
+                    "latitude": 860063,
+                    "longitude": 93623469
+                }
+            ]
+        },
+        {
+            "splitter": "Joint box32",
+            "latitude": 860937,
+            "longitude": 93623981,
+            "connectedTo": "splitter 33"
+        },
+        {
+            "splitter": "splitter 34",
+            "latitude": 861883,
+            "longitude": 93623580,
+            "connectedTo": "Joint box32",
+            "customers": [
+                {
+                    "landline": "299923",
+                    "latitude": 8672,
+                    "longitude": 93623588
+                },
+                {
+                    "landline": "299936",
+                    "latitude": 861943,
+                    "longitude": 93623670
+                }
+            ]
+        },
+        {
+            "splitter": "splitter 50",
+            "latitude": 858874,
+            "longitude":  93626300,
+            "connectedTo": "Post 1",
+            "customers": [
+                {
+                    "landline": "299903",
+                    "latitude": 859017,
+                    "longitude":  93626464
+                }
+            ]
+        },
+        {
+            "splitter": "splitter 51",
+            "latitude": 859700,  
+            "longitude": 936865,
+            "connectedTo": "splitter 50",
+            "customers": [
+                {
+                    "landline": "299921",
+                    "latitude": 859467,
+                    "longitude":  936761
+                },
+                {
+                    "landline": "299947",
+                    "latitude": 859484,
+                    "longitude": 936787
+                },
+                {
+                    "landline": "299953",
+                    "latitude": 860051, 
+                    "longitude": 93625782
+                }
+            ]
+        }
+    ]
+}

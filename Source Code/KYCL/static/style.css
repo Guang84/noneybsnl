@@ -1,0 +1,212 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Map Container */
+#map {
+    flex: 1;
+    height: 60vh; /* Adjust height for better mobile responsiveness */
+    min-height: 300px; /* Ensure map is always visible */
+}
+
+/* Sidebar Container */
+#info {
+    width: 100%; /* Full width on small screens */
+    max-width: 100%; /* Allow sidebar to grow on larger screens */
+    background: #ffffff;
+    padding: 1.5rem;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    border-top: 1px solid #e0e0e0;
+}
+
+/* Input Group */
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+#search-input {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#search-input:focus {
+    border-color: #4285F4;
+    box-shadow: 0 2px 8px rgba(66, 133, 244, 0.2);
+    outline: none;
+}
+
+/* Button Container */
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.button-container button {
+    flex: 1 1 45%; /* Flexible buttons with a minimum width */
+    padding: 0.75rem;
+    font-size: 0.875rem;
+    background: #4285F4;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button-container button:hover {
+    background: #357ABD;
+    transform: translateY(-2px);
+}
+
+.button-container button:active {
+    transform: translateY(0);
+}
+
+/* Info Sections */
+.info-section {
+    margin-bottom: 1.5rem;
+}
+
+.info-section h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.125rem;
+    color: #333;
+    font-weight: 600;
+}
+
+.info-content {
+    background: #ffffff;
+    padding: 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s ease;
+}
+
+.info-content:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.info-content strong {
+    color: #333;
+    font-size: 1rem;
+}
+
+.info-content small {
+    color: #666;
+    font-size: 0.875rem;
+}
+
+.info-content b {
+    color: #333;
+}
+
+/* Center Button */
+.center-btn {
+    background: #34A853;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.center-btn:hover {
+    background: #2E8B57;
+    transform: translateY(-2px);
+}
+
+.center-btn:active {
+    transform: translateY(0);
+}
+
+/* Error Messages */
+.error {
+    color: #d32f2f;
+    font-size: 0.875rem;
+    margin-bottom: 0.75rem;
+    padding: 0.75rem;
+    background: #ffebee;
+    border-radius: 6px;
+    border: 1px solid #d32f2f;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    body {
+        flex-direction: row; /* Sidebar on the right for larger screens */
+    }
+
+    #map {
+        height: 100vh; /* Full height on larger screens */
+    }
+
+    #info {
+        width: 25%; /* Sidebar takes 25% of the screen */
+        max-width: 400px; /* Limit sidebar width */
+        height: 100vh; /* Full height on larger screens */
+        border-top: none;
+        border-left: 1px solid #e0e0e0;
+    }
+
+    .button-container button {
+        flex: 1 1 30%; /* Adjust button width for larger screens */
+    }
+}
+
+@media (min-width: 1024px) {
+    #info {
+        width: 20%; /* Sidebar takes 20% of the screen on very large screens */
+    }
+
+    .button-container button {
+        flex: 1 1 20%; /* Adjust button width for very large screens */
+    }
+}
+
+@media (max-width: 767px) {
+    #info {
+        max-width: 100%; /* Full width on small screens */
+    }
+
+    .button-container button {
+        flex: 1 1 100%; /* Full width buttons on small screens */
+    }
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.mt-1 {
+    margin-top: 0.5rem;
+}
+
+.mb-1 {
+    margin-bottom: 0.5rem;
+}
+
+.p-1 {
+    padding: 0.5rem;
+}

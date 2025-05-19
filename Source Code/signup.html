@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up for Your Internet Plan</title>
+    <link rel="stylesheet" href="static/CSS/signup.css">
+    <link rel="icon" href="https://i.postimg.cc/MTzjJM7M/GH.png" type="image/x-icon">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <h1 class="title">Sign Up for Your Internet Plan</h1>
+            <p class="subtitle">Get connected with the best internet services in your area.</p>
+        </header>
+
+        <!-- Plan Details Section -->
+        <section class="plan-details">
+            <h2>Selected Plan Details</h2>
+            <div style="background-color: #fff8e1; padding: 15px; border-left: 4px solid #ffc107; margin: 20px 0;">
+                <h3 style="color: #2c3e50;">Plan Not Display?</h3>
+                <div style="display: flex; margin-bottom: 8px;">
+                    <span style="margin-right: 10px; color: #f39c12;">•</span>
+                    <strong>Go back to the Main page.</strong>
+                </div>
+                <div style="display: flex; margin-bottom: 8px;">
+                    <span style="margin-right: 10px; color: #f39c12;">•</span>
+                    <strong>Click on MENU>Plans.</strong>
+                </div>
+                <div style="display: flex; margin-bottom: 8px;">
+                    <span style="margin-right: 10px; color: #f39c12;">•</span>
+                    <strong>Select your prefered plan and click on button below the selected plan.</strong>
+                </div>
+                <div style="display: flex; margin-bottom: 8px;">
+                    <span style="margin-right: 10px; color: #f39c12;">•</span>
+                    <strong>To complete the order, Click on the Order Now button. </strong>
+                </div>
+            </div>
+            <div class="plan-info">
+                <p><strong>Plan Name:</strong> <span id="plan-name"></span></p>
+                <p><strong>Price:</strong> <span id="plan-price">₹</span></p>
+                <p><strong>Speed:</strong> <span id="plan-speed"></span></p>
+                <p><strong>Details:</strong> <span id="plan-details"></span></p>
+            </div>
+        </section>
+
+        <!-- Instructions Section -->
+        <section class="instructions">
+            <h3>Instructions</h3>
+            <p>Copy the plan details below and send them via <b>WhatsApp</b> along with your documents.</p>
+            <textarea id="copy-box" readonly></textarea>
+            <button id="copy-button">Copy Plan Details</button>
+        </section>
+        <!-- Contact Section -->
+        <section class="contact">
+            <a id="whatsapp-link" href="https://wa.me/+918415028828" target="_blank" class="contact-link">
+                <img src="https://cdn-icons-png.flaticon.com/128/3536/3536445.png" alt="WhatsApp" class="contact-icon">
+                Order Now
+            </a>
+        </section>
+
+        <!-- Documents Section -->
+        <section class="documents">
+            <h3>Required Documents</h3>
+            <ul>
+                <li><span class="icon">📄</span> Name</li>
+                <li><span class="icon">📧</span> Email</li>
+                <li><span class="icon">📱</span> Phone Number</li>
+                <li><span class="icon">🖼️</span> Aadhar Front Image</li>
+                <li><span class="icon">🖼️</span> Aadhar Back Image</li>
+                <li><span class="icon">📸</span> Passport Photo</li>
+                <li><span class="icon">🧾</span> Electric Bill Receipt (if non-resident)</li>
+            </ul>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact">
+            <a id="whatsapp-link" href="https://wa.me/+918415028828" target="_blank" class="contact-link">
+                <img src="https://cdn-icons-png.flaticon.com/128/3536/3536445.png" alt="WhatsApp" class="contact-icon">
+                Send via WhatsApp
+            </a>
+        </section>
+    </div>
+
+    <script src="static/JS/signup.js"></script>
+</body>
+</html>

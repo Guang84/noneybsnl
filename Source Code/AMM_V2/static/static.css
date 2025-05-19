@@ -1,0 +1,231 @@
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    background: #f0f2f5;
+}
+
+/* Map Container */
+#map {
+    flex: 3;
+    height: 100%;
+}
+
+/* Sidebar Container */
+#sidebar {
+    flex: 1;
+    padding: 20px;
+    background: #ffffff;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+
+/* Info Content Blocks */
+.info-content {
+    margin-bottom: 15px;
+    padding: 15px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Mode Buttons */
+.mode-btn {
+    margin: 5px;
+    padding: 8px 15px;
+    background: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.mode-btn.active {
+    background: #28a745;
+    box-shadow: 0 2px 5px rgba(40, 167, 69, 0.3);
+}
+
+.mode-btn:hover {
+    opacity: 0.9;
+}
+
+/* General Buttons */
+button {
+    padding: 10px 20px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+/* Input Fields */
+input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 5px 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Measurement Markers */
+.measure-marker {
+    background: #dc3545;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 50%;
+    font-size: 0.8em;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 300px;
+}
+
+.modal h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+/* Form Groups */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+/* Measurement Results */
+#measure-results {
+    margin-top: 15px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 6px;
+}
+
+.segment-item {
+    margin: 8px 0;
+    padding: 8px;
+    background: white;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+/* Coordinates Display */
+.coordinates-display {
+    font-family: monospace;
+    color: #666;
+    font-size: 0.9em;
+}
+
+/* Danger Buttons */
+.danger {
+    background: #dc3545 !important;
+}
+
+.danger:hover {
+    background: #bb2d3b !important;
+}
+
+/* Secondary Buttons */
+.secondary {
+    background: #6c757d !important;
+}
+
+.secondary:hover {
+    background: #5a6268 !important;
+}
+
+/* Error Messages */
+.error-message {
+    color: #dc3545;
+    font-size: 0.8em;
+    margin-top: 5px;
+}
+
+.input-error {
+    border-color: #dc3545 !important;
+}
+
+/* Scrollable Sections */
+#segments {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+/* Center Buttons */
+.center-btn {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.center-btn:hover {
+    background: #0056b3;
+}
+
+/* Delete Buttons */
+.delete-btn {
+    background: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background: #bb2d3b;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    #map {
+        flex: 2;
+    }
+
+    #sidebar {
+        flex: 1;
+        padding: 10px;
+    }
+
+    .info-content {
+        padding: 10px;
+    }
+}

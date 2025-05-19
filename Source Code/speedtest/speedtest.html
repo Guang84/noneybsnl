@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Network Speed Test</title>
+    <style>
+        :root {
+            --primary: #3498db;
+            --success: #2ecc71;
+            --warning: #f1c40f;
+            --danger: #e74c3c;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin: 25px 0;
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+        }
+        .progress-container {
+            height: 12px;
+            background: #eee;
+            border-radius: 6px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 25px;
+        }
+        .result-card {
+            text-align: center;
+            padding: 15px;
+            background: var(--light);
+            border-radius: 8px;
+        }
+        .result-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%;
+            transition: all 0.2s ease;
+        }
+        button:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        button:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+        }
+        .status {
+            text-align: center;
+            margin: 20px 0;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+        .testing { background: #fff3cd; color: #856404; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .server-info {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: var(--light);
+            border-radius: 8px;
+        }
+        @media (max-width: 600px) {
+            .results-grid { grid-template-columns: 1fr; }
+            .container { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Advanced Network Speed Test</h1>
+        
+        <div class="server-info">
+            <div><strong>Your IP:</strong> <span id="ip">Detecting...</span></div>
+            <div><strong>Nearest Server:</strong> <span id="server">Finding best server...</span></div>
+            <div><strong>Test Time:</strong> <span id="test-time">-</span></div>
+        </div>
+
+        <div class="test-section">
+            <h3>Download Speed</h3>
+            <div class="progress-container">
+                <div class="progress-bar" id="download-bar"></div>
+            </div>
+            <div class="result-value" id="download-speed">0 Mbps</div>
+        </div>
+
+        <div class="test-section">
+            <h3>Upload Speed</h3>
+            <div class="progress-container">
+                <div class="progress-bar" id="upload-bar"></div>
+            </div>
+            <div class="result-value" id="upload-speed">0 Mbps</div>
+        </div>
+
+        <div class="results-grid">
+            <div class="result-card">
+                <div>Ping</div>
+                <div class="result-value" id="ping">0 ms</div>
+            </div>
+            <div class="result-card">
+                <div>Jitter</div>
+                <div class="result-value" id="jitter">0 ms</div>
+            </div>
+            <div class="result-card">
+                <div>Packet Loss</div>
+                <div class="result-value" id="packet-loss">0%</div>
+            </div>
+        </div>
+
+        <div class="status" id="status">Ready to test</div>
+        
+        <button id="start-btn">Start Speed Test</button>
+        <a href="/results" class="btn" style="display: block; text-align: center; margin-top: 15px;">View Test History</a>
+    </div>
+
+    <script>
+        // Configuration
+        const config = {
+            server: window.location.origin,
+            cloudflare: {
+                trace: 'https://speed.cloudflare.com/cdn-cgi/trace',
+                download: 'https://speed.cloudflare.com/__down',
+                upload: 'https://speed.cloudflare.com/__up'
+            },
+            testDuration: 5000, // 5 seconds per test
+            maxSpeed: 1000, // 1 Gbps
+            coloMap: {
+                'LAX': 'Los Angeles, US',
+                'SJC': 'San Jose, US',
+                'DFW': 'Dallas, US',
+                'ORD': 'Chicago, US',
+                'IAD': 'Washington, US',
+                'LHR': 'London, UK',
+                'CDG': 'Paris, FR',
+                'FRA': 'Frankfurt, DE',
+                'SIN': 'Singapore, SG',
+                'NRT': 'Tokyo, JP'
+            }
+        };
+
+        // DOM Elements
+        const startBtn = document.getElementById('start-btn');
+        const statusEl = document.getElementById('status');
+        const downloadBar = document.getElementById('download-bar');
+        const uploadBar = document.getElementById('upload-bar');
+        const downloadSpeedEl = document.getElementById('download-speed');
+        const uploadSpeedEl = document.getElementById('upload-speed');
+        const pingEl = document.getElementById('ping');
+        const jitterEl = document.getElementById('jitter');
+        const packetLossEl = document.getElementById('packet-loss');
+        const ipEl = document.getElementById('ip');
+        const serverEl = document.getElementById('server');
+        const testTimeEl = document.getElementById('test-time');
+
+        // State
+        let testInProgress = false;
+        let currentServer = null;
+        let testController = new AbortController();
+
+        // Initialize
+        getClientInfo();
+
+        // Event Listeners
+        startBtn.addEventListener('click', startTest);
+
+        async function startTest() {
+            if (testInProgress) return;
+            
+            testInProgress = true;
+            startBtn.disabled = true;
+            statusEl.textContent = "Initializing test...";
+            statusEl.className = "status testing";
+            resetUI();
+            
+            try {
+                const startTime = new Date();
+                testTimeEl.textContent = startTime.toLocaleString();
+                
+                // Get client and server info
+                await getClientInfo();
+                
+                // Run network quality tests
+                const networkQuality = await testNetworkQuality();
+                updateNetworkUI(networkQuality);
+                
+                // Run parallel speed tests
+                const [download, upload] = await Promise.all([
+                    testDownloadSpeed(),
+                    testUploadSpeed()
+                ]);
+                
+                // Save results
+                const results = {
+                    ...networkQuality,
+                    download,
+                    upload,
+                    server: currentServer.location,
+                    colo: currentServer.colo,
+                    timestamp: startTime.toISOString()
+                };
+                
+                await saveResults(results);
+                statusEl.textContent = "Test completed successfully!";
+                statusEl.className = "status success";
+                
+            } catch (error) {
+                console.error("Test failed:", error);
+                statusEl.textContent = `Test failed: ${error.message}`;
+                statusEl.className = "status error";
+            } finally {
+                testInProgress = false;
+                startBtn.disabled = false;
+            }
+        }
+
+        async function testNetworkQuality() {
+            const pingTests = [];
+            let failedPings = 0;
+            
+            // Test ping 10 times
+            for (let i = 0; i < 10; i++) {
+                try {
+                    const start = performance.now();
+                    await fetch(`${config.cloudflare.download}?bytes=1`, { 
+                        signal: testController.signal,
+                        cache: 'no-store'
+                    });
+                    pingTests.push(performance.now() - start);
+                } catch {
+                    failedPings++;
+                }
+                await new Promise(r => setTimeout(r, 100));
+            }
+            
+            // Calculate metrics
+            const ping = average(pingTests);
+            const jitter = calculateJitter(pingTests);
+            const packetLoss = (failedPings / 10) * 100;
+            
+            return {
+                ping: ping.toFixed(1),
+                jitter: jitter.toFixed(1),
+                packetLoss: packetLoss.toFixed(1)
+            };
+        }
+
+        async function testDownloadSpeed() {
+            let bytesReceived = 0;
+            const startTime = performance.now();
+            const speedSamples = [];
+            testController = new AbortController();
+            
+            // Timeout after test duration
+            setTimeout(() => testController.abort(), config.testDuration);
+            
+            while (performance.now() - startTime < config.testDuration) {
+                const chunkSize = getOptimalChunkSize(bytesReceived);
+                try {
+                    const chunkStart = performance.now();
+                    const response = await fetch(
+                        `${config.cloudflare.download}?bytes=${chunkSize}`, 
+                        { signal: testController.signal }
+                    );
+                    const blob = await response.blob();
+                    bytesReceived += blob.size;
+                    
+                    // Calculate current speed
+                    const duration = (performance.now() - startTime) / 1000;
+                    const speed = (bytesReceived * 8) / (duration * 1000000);
+                    speedSamples.push(speed);
+                    
+                    // Update UI
+                    downloadSpeedEl.textContent = `${speed.toFixed(1)} Mbps`;
+                    updateProgressBar(downloadBar, speed);
+                    
+                } catch {
+                    break;
+                }
+            }
+            
+            return average(speedSamples).toFixed(1);
+        }
+
+        async function testUploadSpeed() {
+            let bytesSent = 0;
+            const startTime = performance.now();
+            const speedSamples = [];
+            const chunkSize = 2 * 1024 * 1024; // 2MB chunks
+            
+            while (performance.now() - startTime < config.testDuration) {
+                try {
+                    const blob = new Blob([new Uint8Array(chunkSize)]);
+                    const uploadStart = performance.now();
+                    await fetch(config.cloudflare.upload, {
+                        method: 'POST',
+                        body: blob,
+                        signal: testController.signal
+                    });
+                    const duration = (performance.now() - uploadStart) / 1000;
+                    const speed = (chunkSize * 8) / (duration * 1000000);
+                    
+                    bytesSent += chunkSize;
+                    speedSamples.push(speed);
+                    
+                    // Update UI
+                    uploadSpeedEl.textContent = `${speed.toFixed(1)} Mbps`;
+                    updateProgressBar(uploadBar, speed);
+                    
+                } catch {
+                    break;
+                }
+            }
+            
+            return average(speedSamples).toFixed(1);
+        }
+
+        async function getClientInfo() {
+            try {
+                const response = await fetch(config.cloudflare.trace);
+                const data = await response.text();
+                
+                const ip = data.match(/ip=([\d.]+)/)?.[1] || 'Unknown';
+                const colo = data.match(/colo=([A-Z]+)/)?.[1] || 'Unknown';
+                const country = data.match(/country=([A-Z]+)/)?.[1] || 'Unknown';
+                
+                ipEl.textContent = ip;
+                serverEl.textContent = config.coloMap[colo] || colo;
+                
+                currentServer = {
+                    url: config.cloudflare.download,
+                    location: config.coloMap[colo] || colo,
+                    colo: colo,
+                    country: country
+                };
+                
+            } catch (error) {
+                console.error("Failed to get client info:", error);
+                ipEl.textContent = "Unknown";
+                serverEl.textContent = "Unknown";
+            }
+        }
+
+        async function saveResults(results) {
+            try {
+                const response = await fetch(`${config.server}/api/save-result`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(results)
+                });
+                
+                if (!response.ok) {
+                    throw new Error("Failed to save results");
+                }
+            } catch (error) {
+                console.error("Error saving results:", error);
+                throw error;
+            }
+        }
+
+        // Helper functions
+        function updateProgressBar(bar, speed) {
+            const percent = Math.min(100, (speed / config.maxSpeed) * 100);
+            bar.style.width = `${percent}%`;
+            
+            // Color coding
+            if (percent > 75) bar.style.backgroundColor = 'var(--success)';
+            else if (percent > 50) bar.style.backgroundColor = 'var(--primary)';
+            else if (percent > 25) bar.style.backgroundColor = 'var(--warning)';
+            else bar.style.backgroundColor = 'var(--danger)';
+        }
+
+        function calculateJitter(times) {
+            if (times.length < 2) return 0;
+            let sum = 0;
+            for (let i = 1; i < times.length; i++) {
+                sum += Math.abs(times[i] - times[i-1]);
+            }
+            return sum / (times.length - 1);
+        }
+
+        function average(arr) {
+            if (!arr.length) return 0;
+            return arr.reduce((a, b) => a + b, 0) / arr.length;
+        }
+
+        function getOptimalChunkSize(received) {
+            if (received < 10 * 1024 * 1024) return 1 * 1024 * 1024; // 1MB
+            if (received < 50 * 1024 * 1024) return 5 * 1024 * 1024; // 5MB
+            return 10 * 1024 * 1024; // 10MB
+        }
+
+        function updateNetworkUI({ ping, jitter, packetLoss }) {
+            pingEl.textContent = `${ping} ms`;
+            jitterEl.textContent = `${jitter} ms`;
+            packetLossEl.textContent = `${packetLoss}%`;
+        }
+
+        function resetUI() {
+            downloadBar.style.width = "0%";
+            uploadBar.style.width = "0%";
+            downloadSpeedEl.textContent = "0 Mbps";
+            uploadSpeedEl.textContent = "0 Mbps";
+            downloadBar.style.backgroundColor = "";
+            uploadBar.style.backgroundColor = "";
+        }
+    </script>
+</body>
+</html>

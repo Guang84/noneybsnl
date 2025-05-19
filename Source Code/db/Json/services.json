@@ -1,0 +1,39 @@
+{
+    "services": [
+        {
+            "name": "Charges for New connections",
+            "image": "https://5.imimg.com/data5/SELLER/Default/2023/8/335136262/YH/JE/VS/17057961/uniway-dual-wifi-router-1000x1000.png",
+            "description": "High-speed internet connectivity with our router",
+            "charges": [
+                { "label": "<i>Router: 6 month to 1 Year warranty</i><br>Charges", "amount": " <br>TML: Rs.6000(Router + 50m free cable + setup) <br>  <b>Total: 6000 </b> <br>NONEY: Rs.5500(Router + 50m free cable + setup) <br> <b>Total: 5500 </b> " },
+                { "label": "*", "amount": "_:*" }
+            ]
+        },
+        {
+            "name": "Landline Telephone Services",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuOAf4vlNZ1cQ9pH1JEQwzFgWP44AspPaExQ&s",
+            "description": "Reliable landline telephone services for clear and uninterrupted communication.",
+            "charges": [
+                { "label": "Landline Setup Charges", "amount": "Rs.500 (one-time)" },
+                { "label": "Monthly Charges", "amount": "0" }
+            ]
+        },
+        {
+            "name": "Optical Fiber Services",
+            "image": "https://5.imimg.com/data5/SELLER/Default/2021/3/QB/AV/GV/2544513/2-core-fiber-ftth.jpg",
+            "description": "Blazing-fast internet speeds with our optical fiber connections.",
+            "charges": [
+                { "label": "Optical Fiber Installation Charges", "amount": "50m Free" },
+                { "label": "Charges", "amount": "Rs. 10-15/m" }
+            ]
+        },
+        {
+            "name": "LAN Setup Services",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO4FVw-YS890sdPMSyOWFqkhTwy6dsBKB3fQ&s",
+            "description": "Professional LAN setup for your home or office network.",
+            "charges": [
+                { "label": "LAN Charges", "amount": "Depends on cable length (available on request)" }
+            ]
+        }
+    ]
+}
