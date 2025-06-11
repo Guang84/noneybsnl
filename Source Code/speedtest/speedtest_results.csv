@@ -1,2 +1,0 @@
-timestamp,client_ip,client_country,client_city,client_isp,download_speed,upload_speed,ping,jitter,user_agent,server_location,test_method
-2025-05-16 15:15:37,192.168.1.84,Unknown,Unknown,Unknown,2.475322971710039,1.6900456312315113,70.334,5.3,"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36","Unknown, Unknown",Web-based
