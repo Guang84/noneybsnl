@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noney BSNL Wi-Fi Redirect</title>
+    <title>Noney BSNL Portal | Futuristic Redirect</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-        <link rel="icon" href="https://bsnl.co.in/assets/bsnl1-E6iVMV-k.png" type="image/x-icon">
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://bsnl.co.in/assets/bsnl1-E6iVMV-k.png" type="image/x-icon">
 </head>
 <body>
+    <div class="particles"></div>
+    
     <div class="card">
         <img src="https://bsnl.co.in/assets/bsnl1-E6iVMV-k.png" alt="BSNL Logo" class="logo">
-        <h2 style="color: rgb(202, 79, 3);"><span><b> Noney BSNL</b></span></h2>
-        <h1>Accessing Noney BSNL Wi-Fi Portal</h1>
+        <h2 style="color: var(--secondary);"><span><b>NONEY BSNL</b></span></h2>
+        <h1>Connecting to Wi-Fi Portal</h1>
         
         <div class="message-container" id="messageContainer">
             <div class="message active"></div>
@@ -28,7 +29,14 @@
             </div>
         </div>
         
-        <button class="btn" id="manualRedirect" style="display: none;">Continue</button>
+        <button class="btn" id="manualRedirect" style="display: none;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+            Continue to Portal
+        </button>
     </div>
 
     <script src="script.js"></script>
