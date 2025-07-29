@@ -1,26 +1,19 @@
-/* ===== Modern BSNL Portal CSS ===== */
-/* ===== Version 2.0 - Enhanced Color Scheme & Error Handling ===== */
-
 :root {
-  /* ========== Color Palette ========== */
-  /* Primary Colors */
+  /* Color Palette */
   --primary: #7b2cbf;
   --primary-light: #9d4edd;
   --primary-lighter: #c77dff;
   --primary-dark: #5a189a;
   --primary-darker: #3c096c;
   
-  /* Secondary Colors */
   --secondary: #00bbf9;
   --secondary-light: #48c8ff;
   --secondary-dark: #0088cc;
   
-  /* Accent Colors */
   --accent: #f15bb5;
   --accent-light: #ff87c8;
   --accent-dark: #d6338a;
   
-  /* System Colors */
   --error: #ef476f;
   --error-light: #ff7096;
   --error-dark: #d90429;
@@ -31,7 +24,7 @@
   --warning-light: #ffe69e;
   --warning-dark: #ffb703;
   
-  /* ========== Background & Text ========== */
+  /* Background & Text */
   --bg: #0f0f1a;
   --bg-dark: #0a0a12;
   --bg-darker: #05050a;
@@ -43,7 +36,7 @@
   --text-lighter: #e9ecef;
   --text-dark: #6c757d;
   
-  /* ========== UI Elements ========== */
+  /* UI Elements */
   --card-bg: rgba(26, 26, 46, 0.9);
   --card-border: rgba(58, 58, 90, 0.6);
   --card-border-light: rgba(123, 44, 191, 0.3);
@@ -52,7 +45,7 @@
   --input-border: rgba(90, 24, 154, 0.5);
   --input-focus: rgba(123, 44, 191, 0.7);
   
-  /* ========== Effects ========== */
+  /* Effects */
   --glow: 0 0 20px rgba(123, 44, 191, 0.4);
   --glow-secondary: 0 0 20px rgba(0, 187, 249, 0.3);
   --glow-error: 0 0 15px rgba(239, 71, 111, 0.3);
@@ -60,13 +53,7 @@
   --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-fast: all 0.2s ease-out;
   
-  /* ========== Shadows ========== */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.2);
-  --shadow-xl: 0 20px 50px rgba(0, 0, 0, 0.3);
-  
-  /* ========== Spacing ========== */
+  /* Spacing */
   --space-xs: 4px;
   --space-sm: 8px;
   --space-md: 16px;
@@ -75,7 +62,6 @@
   --space-xxl: 48px;
 }
 
-/* ===== Base Styles ===== */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -108,7 +94,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ===== Typography ===== */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   line-height: 1.2;
@@ -141,7 +126,6 @@ p {
   color: var(--text-light);
 }
 
-/* ===== Card Styles ===== */
 .card {
   width: 90%;
   max-width: 480px;
@@ -183,7 +167,6 @@ p {
   100% { transform: translate(1.5rem, 1.5rem); }
 }
 
-/* ===== Logo Styles ===== */
 .logo-container {
   position: relative;
   width: 80px;
@@ -219,7 +202,6 @@ p {
   100% { transform: scale(1.1); opacity: 0.9; }
 }
 
-/* ===== Connection Status ===== */
 .connection-status {
   margin: var(--space-xl) 0;
 }
@@ -251,7 +233,6 @@ p {
   transform: translateY(0) rotateX(0);
 }
 
-/* ===== Spinner ===== */
 .spinner-container {
   position: relative;
   width: 48px;
@@ -287,7 +268,6 @@ p {
   100% { transform: rotate(360deg); }
 }
 
-/* ===== Progress Bar ===== */
 .progress-container {
   margin: var(--space-xl) 0;
   position: relative;
@@ -343,7 +323,6 @@ p {
   font-weight: 500;
 }
 
-/* ===== Buttons ===== */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -378,7 +357,6 @@ p {
   position: relative;
 }
 
-/* Primary Button */
 .btn-primary {
   background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   box-shadow: 
@@ -414,37 +392,6 @@ p {
   transform: translateY(0);
 }
 
-/* Secondary Button */
-.btn-secondary {
-  background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
-  box-shadow: 
-    var(--shadow-md),
-    0 0 0 1px rgba(0, 187, 249, 0.3);
-}
-
-.btn-secondary:hover {
-  transform: translateY(-3px);
-  box-shadow: 
-    var(--shadow-lg),
-    0 0 0 1px rgba(0, 187, 249, 0.4);
-}
-
-/* Error Button */
-.btn-error {
-  background: linear-gradient(135deg, var(--error), var(--error-dark));
-  box-shadow: 
-    var(--shadow-md),
-    0 0 0 1px rgba(239, 71, 111, 0.3);
-}
-
-.btn-error:hover {
-  transform: translateY(-3px);
-  box-shadow: 
-    var(--shadow-lg),
-    0 0 0 1px rgba(239, 71, 111, 0.4);
-}
-
-/* ===== Error Notification ===== */
 .error-notification {
   display: none;
   background: rgba(239, 71, 111, 0.15);
@@ -482,7 +429,6 @@ p {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ===== Particles ===== */
 .particles {
   position: absolute;
   top: 0;
@@ -506,7 +452,6 @@ p {
   100% { transform: translateY(-100vh) rotate(360deg); }
 }
 
-/* ===== Utility Classes ===== */
 .pulse {
   animation: pulse 2s infinite;
 }
@@ -521,7 +466,6 @@ p {
   display: none !important;
 }
 
-/* ===== Responsive Design ===== */
 @media (max-width: 480px) {
   .card {
     padding: var(--space-lg);

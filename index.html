@@ -1,63 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>noney bsnl Wi-Fi</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="https://i.postimg.cc/MTzjJM7M/GH.png" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="https://bsnl.co.in/assets/bsnl1-E6iVMV-k.png" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Noney BSNL Wi-Fi Portal</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="particles" id="particles"></div>
-    
-    <div class="card">
-        <div class="logo-container">
-            <img src="https://bsnl.co.in/assets/bsnl1-E6iVMV-k.png" alt="BSNL Logo" class="logo">
-            <div class="logo-glow"></div>
-        </div>
-        
-        <h2 class="subtitle">NONEY BSNL</h2>
-        <h1 class="title">Connecting to Wi-Fi Portal</h1>
-        
-        <div class="connection-status">
-            <div class="message-container" id="messageContainer">
-                <div class="message active"></div>
-                <div class="message"></div>
-            </div>
-            
-            <div class="spinner-container">
-                <div class="spinner"></div>
-                <div class="spinner-track"></div>
-            </div>
-        </div>
-        
-        <div class="progress-container">
-            <div class="progress-bar">
-                <div class="progress" id="progress"></div>
-                <div class="progress-glow"></div>
-            </div>
-            <div class="progress-text" id="progressText">0%</div>
-        </div>
-        
-        <button class="btn btn-primary" id="manualRedirect">
-            <svg class="btn-icon" viewBox="0 0 24 24">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                <polyline points="15 3 21 3 21 9"></polyline>
-                <line x1="10" y1="14" x2="21" y2="3"></line>
-            </svg>
-            <span class="btn-text">Continue to Portal</span>
-        </button>
-
-        <div class="error-notification" id="errorNotification">
-            <svg class="error-icon" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
-            </svg>
-            <span class="error-message" id="errorMessage"></span>
-        </div>
+  <main class="card">
+    <div class="logo-container">
+      <img src="https://bsnl.co.in/assets/bsnl1-E6iVMV-k.png" alt="Noney BSNL Wi-Fi" class="logo" />
+      <div class="logo-glow"></div>
     </div>
 
-    <script src="script.js"></script>
+    <h1 class="title">Welcome to Noney BSNL Wi-Fi</h1>
+    <p class="subtitle">Connecting you securely</p>
+
+    <div id="messageContainer" class="message-container">
+      <div class="message"></div>
+    </div>
+
+    <div class="spinner-container">
+      <div class="spinner">
+        <div class="spinner-track"></div>
+      </div>
+    </div>
+
+    <div class="progress-container">
+      <div class="progress-bar">
+        <div id="progress" class="progress"></div>
+        <div class="progress-glow"></div>
+      </div>
+      <div id="progressText" class="progress-text">0%</div>
+    </div>
+<!--
+    <a id="manualRedirect" href="#" class="btn btn-primary" style="display:none;">
+      <span class="btn-text">Open Server Now</span>
+    </a>
+-->
+    <div id="errorNotification" class="error-notification" style="display:none;">
+      <svg class="error-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="12" r="10" stroke="var(--error)" stroke-width="2"/>
+        <line x1="12" y1="7" x2="12" y2="13" stroke="var(--error)" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="12" cy="17" r="1" fill="var(--error)"/>
+      </svg>
+      <p id="errorMessage" class="error-message"></p>
+    </div>
+
+    <div id="particles" class="particles" aria-hidden="true"></div>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
