@@ -3,40 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noney BSNL Portal | Redirect</title>
+    <title>noney bsnl Wi-Fi</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://i.postimg.cc/MTzjJM7M/GH.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="https://bsnl.co.in/assets/bsnl1-E6iVMV-k.png" type="image/x-icon">
 </head>
 <body>
-    <div class="particles"></div>
+    <div class="particles" id="particles"></div>
     
     <div class="card">
-        <img src="https://bsnl.co.in/assets/bsnl1-E6iVMV-k.png" alt="BSNL Logo" class="logo">
-        <h2 style="color: var(--secondary);"><span><b>NONEY BSNL</b></span></h2>
-        <h1>Connecting to Wi-Fi Portal</h1>
-        
-        <div class="message-container" id="messageContainer">
-            <div class="message active"></div>
-            <div class="message"></div>
+        <div class="logo-container">
+            <img src="https://bsnl.co.in/assets/bsnl1-E6iVMV-k.png" alt="BSNL Logo" class="logo">
+            <div class="logo-glow"></div>
         </div>
         
-        <div class="spinner"></div>
+        <h2 class="subtitle">NONEY BSNL</h2>
+        <h1 class="title">Connecting to Wi-Fi Portal</h1>
+        
+        <div class="connection-status">
+            <div class="message-container" id="messageContainer">
+                <div class="message active"></div>
+                <div class="message"></div>
+            </div>
+            
+            <div class="spinner-container">
+                <div class="spinner"></div>
+                <div class="spinner-track"></div>
+            </div>
+        </div>
         
         <div class="progress-container">
             <div class="progress-bar">
                 <div class="progress" id="progress"></div>
+                <div class="progress-glow"></div>
             </div>
+            <div class="progress-text" id="progressText">0%</div>
         </div>
         
-        <button class="btn" id="manualRedirect" style="display: none;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;">
+        <button class="btn btn-primary" id="manualRedirect">
+            <svg class="btn-icon" viewBox="0 0 24 24">
                 <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                 <polyline points="15 3 21 3 21 9"></polyline>
                 <line x1="10" y1="14" x2="21" y2="3"></line>
             </svg>
-            Continue to Portal
+            <span class="btn-text">Continue to Portal</span>
         </button>
+
+        <div class="error-notification" id="errorNotification">
+            <svg class="error-icon" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+            </svg>
+            <span class="error-message" id="errorMessage"></span>
+        </div>
     </div>
 
     <script src="script.js"></script>
