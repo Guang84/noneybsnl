@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Noney BSNL Wi-Fi Portal</title>
   <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <main class="card">
@@ -22,9 +22,7 @@
     </div>
 
     <div class="spinner-container">
-      <div class="spinner">
-        <div class="spinner-track"></div>
-      </div>
+      <div class="spinner"><div class="spinner-track"></div></div>
     </div>
 
     <div class="progress-container">
@@ -34,12 +32,12 @@
       </div>
       <div id="progressText" class="progress-text">0%</div>
     </div>
-<!--
-    <a id="manualRedirect" href="#" class="btn btn-primary" style="display:none;">
-      <span class="btn-text">Open Server Now</span>
+
+    <a id="manualRedirect" href="#" class="btn btn-primary hidden">
+      <span class="btn-text">Open Server Manually</span>
     </a>
--->
-    <div id="errorNotification" class="error-notification" style="display:none;">
+
+    <div id="errorNotification" class="error-notification hidden">
       <svg class="error-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <circle cx="12" cy="12" r="10" stroke="var(--error)" stroke-width="2"/>
         <line x1="12" y1="7" x2="12" y2="13" stroke="var(--error)" stroke-width="2" stroke-linecap="round"/>
