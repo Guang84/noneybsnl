@@ -1,159 +1,50 @@
-l<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>NONEY BSNL Redirect Portal</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f8fafb; color: #222; margin: 0; }
-    .container { max-width: 520px; margin: 48px auto; padding: 32px 24px; background: #fff; border-radius: 12px; box-shadow: 0 2px 10px #0002; }
-    h1 { color: #00796b; font-weight: 700; font-size: 2em; margin-bottom: 6px;}
-    .status { margin: 12px 0; font-size: 1.15em; padding: 8px 16px; border-radius: 6px; background: #e0f7fa; display: inline-block; }
-    .progress { width: 100%; height: 10px; background: #eee; border-radius: 5px; margin: 20px 0; }
-    .progress-bar { height: 10px; background: linear-gradient(90deg,#00bfa5,#009688); border-radius: 5px; transition: width 0.3s; }
-    #consoleLog { font-size: 1em; margin: 10px 0 18px 0; min-height: 36px; color: #555; }
-    .node-list { margin: 0 0 16px 0; padding: 0; list-style: none;}
-    .node-item { display: flex; align-items: center; margin-bottom: 6px;}
-    .node-label { flex: 1; font-weight: 500; }
-    .node-status { width: 18px; height: 18px; border-radius: 50%; margin-right: 10px; display: inline-block;}
-    .node-status.online { background: #00c853; border: 2px solid #e0f7fa;}
-    .node-status.offline { background: #d32f2f; border: 2px solid #fff;}
-    .node-status.unknown { background: #ffd600; border: 2px solid #fff;}
-    .manual-link { background: #009688; color: #fff; margin-left:10px; padding: 5px 12px; border-radius: 5px; text-decoration: none; font-size: 0.96em;}
-    .hidden { display: none; }
-    #retryBtn { margin-top: 24px; padding: 10px 24px; border-radius: 8px; background: #ffd54f; color: #333; border: none; font-size: 1em; font-weight: 600; cursor: pointer;}
-    #fallback { margin-top: 18px; color: #d32f2f; font-weight: 500; font-size: 1.1em;}
-    @media (max-width:600px) { .container{margin:10px;padding:12px;} h1{font-size:1.35em;} }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BSNL Noney — Redirect</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="container">
-  <h1>NONEY BSNL Network Redirect Portal</h1>
-  <div id="statusPill" class="status">Initializing…</div>
-  <div class="progress"><div id="progress" class="progress-bar" style="width:0%"></div></div>
-  <div id="progressPct"></div>
-  <ul id="nodeList" class="node-list"></ul>
-  <div id="consoleLog"></div>
-  <button id="retryBtn" class="hidden">Retry</button>
-  <div id="fallback"></div>
-</div>
-<script>
-const $ = sel => document.querySelector(sel);
-const log = (text, cls = '') => {
-  const el = document.createElement('div');
-  el.className = cls;
-  el.textContent = text;
-  $('#consoleLog').appendChild(el);
-  $('#consoleLog').scrollTop = $('#consoleLog').scrollHeight;
-};
-const sleep = ms => new Promise(r => setTimeout(r, ms));
+  <canvas id="bgCanvas" aria-hidden="true"></canvas>
+  <div class="overlay-grid" aria-hidden="true"></div>
 
-function setStatus(text) { $('#statusPill').textContent = text; }
-function setProgress(p) {
-  $('#progress').style.width = p + '%';
-  $('#progressPct').textContent = Math.round(p) + '%';
-}
-function nodeStatusDot(status) {
-  return `<span class="node-status ${status}"></span>`;
-}
-function updateNodeList(nodes, statuses) {
-  $('#nodeList').innerHTML = nodes.map((node,i) => {
-    let status = statuses[i];
-    let statusText = status === 'online' ? 'Online' : status === 'offline' ? 'Offline' : 'Checking…';
-    let linkBtn = `<a class="manual-link${status!=='online'?' hidden':''}" href="${node.url}" target="_blank">Open</a>`;
-    return `<li class="node-item">${nodeStatusDot(status)}<span class="node-label">${node.name}</span> <span style="margin-left:8px">${statusText}</span>${linkBtn}</li>`;
-  }).join('');
-}
-function showFallback(message) {
-  $('#fallback').textContent = message;
-  $('#retryBtn').classList.remove('hidden');
-}
+  <main class="panel" role="main" aria-live="polite">
+    <header class="panel-head">
+      <div class="brand">
+        <div class="brand-icon">⤓</div>
+        <div>
+          <div class="brand-title">BSNL • Noney</div>
+          <div class="brand-sub">Secure Node Redirect & Diagnostics</div>
+        </div>
+      </div>
+      <div class="status-pill" id="statusPill">BOOTING</div>
+    </header>
 
-/* ---------- Advanced Redirect Logic ---------- */
-(async function main() {
-  setStatus('Loading configuration…');
-  setProgress(5);
-  log('Loading BSNL redirect nodes…');
+    <section class="console-wrap">
+      <div id="consoleLog" class="console" aria-hidden="false"></div>
+    </section>
 
-  // Load redirects.json
-  let nodes = [];
-  try {
-    const r = await fetch('redirects.json', {cache:'no-store'});
-    if (!r.ok) throw new Error('redirects.json not found');
-    const data = await r.json();
-    nodes = Array.isArray(data.redirects) ? data.redirects : [];
-  } catch (e) {
-    setStatus('Config Error');
-    log('Failed to load configuration.', 'fail');
-    showFallback('Configuration file error. Please contact support.');
-    return;
-  }
-  if (!nodes.length) {
-    setStatus('No Servers');
-    log('No redirect nodes found.', 'fail');
-    showFallback('No server nodes are configured.');
-    return;
-  }
+    <section class="progress-wrap">
+      <div class="progress-label">Handshake Progress</div>
+      <div class="progress-bar">
+        <div id="progress" class="progress-fill"></div>
+      </div>
+      <div id="progressPct" class="progress-pct">0%</div>
+    </section>
 
-  setStatus('Probing servers…');
-  setProgress(12);
-  log('Probing servers for live status…');
+    <section class="controls">
+      <a id="manualLink" class="btn hidden" href="#" target="_blank" rel="noopener">OPEN MANUAL</a>
+      <button id="retryBtn" class="btn ghost hidden">RETRY</button>
+    </section>
 
-  let statuses = nodes.map(_ => 'unknown');
-  updateNodeList(nodes, statuses);
+    <footer class="panel-foot">
+      <small>Network diagnostics simulated in-browser • Real redirect attempts are performed (with timeouts)</small>
+    </footer>
+  </main>
 
-  let success = false;
-  for (let i = 0; i < nodes.length; i++) {
-    statuses[i] = 'checking';
-    updateNodeList(nodes, statuses);
-    setStatus(`Checking: ${nodes[i].name}`);
-    setProgress(12 + (i * 60 / nodes.length));
-    log(`Trying "${nodes[i].name}" [${nodes[i].url}]`);
-    let nodeOnline = false;
-    try {
-      const res = await fetch(nodes[i].url, { method: 'GET', cache: 'no-store' });
-      if (res.status === 200) {
-        statuses[i] = 'online';
-        updateNodeList(nodes, statuses);
-        setStatus(`Connected: ${nodes[i].name}`);
-        setProgress(100);
-        log(`Success! Server "${nodes[i].name}" online. Redirecting…`, 'ok');
-        await sleep(Number(nodes[i].delay) || 1200);
-        window.location.href = nodes[i].url;
-        success = true;
-        break;
-      } else {
-        statuses[i] = 'offline';
-        updateNodeList(nodes, statuses);
-        log(`"${nodes[i].name}" responded with status ${res.status}.`, 'fail');
-      }
-    } catch (err) {
-      statuses[i] = 'offline';
-      updateNodeList(nodes, statuses);
-      log(`"${nodes[i].name}" is offline or unreachable.`, 'fail');
-    }
-    await sleep(400);
-  }
-
-  if (!success) {
-    setStatus('All Servers Offline');
-    setProgress(100);
-    log('All nodes are offline. Please try again later.', 'fail');
-    updateNodeList(nodes, statuses);
-    showFallback(
-      'Sorry, all servers are currently offline.<br>You may try again or open manually from the list above.'
-    );
-  }
-})();
-
-/* ---------- Retry logic ---------- */
-$('#retryBtn').onclick = () => {
-  $('#consoleLog').innerHTML = '';
-  $('#fallback').textContent = '';
-  setProgress(0);
-  setStatus('Retrying…');
-  setTimeout(() => window.location.reload(), 400);
-};
-</script>
+  <script src="script.js" defer></script>
 </body>
 </html>
