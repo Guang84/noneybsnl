@@ -1,50 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>BSNL NOC — Secure Redirect</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>BSNL NOC Redirect Portal</title>
+  <style>
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f8fa; color: #222; margin: 0; }
+    .container { max-width: 480px; margin: 48px auto; padding: 32px 24px; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px #0001; }
+    h1 { color: #00796b; font-weight: 700; }
+    .status { margin: 16px 0; font-size: 1.2em; padding: 8px 16px; border-radius: 6px; background: #e0f2f1; display: inline-block; }
+    .progress { width: 100%; height: 7px; background: #eee; border-radius: 3px; margin: 18px 0; }
+    .progress-bar { height: 7px; background: #00bfa5; border-radius: 3px; transition: width 0.2s; }
+    #consoleLog { font-size: 0.96em; margin: 8px 0 12px 0; min-height: 32px; color: #444; }
+    .hidden { display: none; }
+    #manualLink, #retryBtn { margin-top: 18px; display: inline-block; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: 500; }
+    #manualLink { background: #009688; color: #fff; }
+    #retryBtn { background: #ffd54f; color: #333; border: none; cursor: pointer; }
+    #fallback { margin-top: 18px; color: #d32f2f; font-weight: 500; }
+  </style>
 </head>
 <body>
-  <canvas id="bgCanvas" aria-hidden="true"></canvas>
-  <div class="overlay-grid" aria-hidden="true"></div>
+<div class="container">
+  <h1>BSNL Network Portal</h1>
+  <div id="statusPill" class="status">Initializing…</div>
+  <div class="progress"><div id="progress" class="progress-bar" style="width:0%"></div></div>
+  <div id="progressPct"></div>
+  <div id="consoleLog"></div>
+  <a id="manualLink" class="hidden" href="#" target="_blank">Open Manually</a>
+  <button id="retryBtn" class="hidden">Retry</button>
+  <div id="fallback"></div>
+</div>
+<script>
+/* ---------- Utilities ---------- */
+const $ = sel => document.querySelector(sel);
+const log = (text, cls = '') => {
+  const el = document.createElement('div');
+  el.className = cls;
+  el.textContent = text;
+  $('#consoleLog').appendChild(el);
+  $('#consoleLog').scrollTop = $('#consoleLog').scrollHeight;
+};
+const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-  <main class="panel" role="main" aria-live="polite">
-    <header class="panel-head">
-      <div class="brand">
-        <div class="brand-icon">⤓</div>
-        <div>
-          <div class="brand-title">BSNL • NOC</div>
-          <div class="brand-sub">Secure Node Redirect & Diagnostics</div>
-        </div>
-      </div>
-      <div class="status-pill" id="statusPill">BOOTING</div>
-    </header>
+function setStatus(text) { $('#statusPill').textContent = text; }
+function setProgress(p) {
+  $('#progress').style.width = p + '%';
+  $('#progressPct').textContent = p + '%';
+}
+function showFallback(message, url=null) {
+  $('#fallback').textContent = message;
+  $('#manualLink').classList.remove('hidden');
+  $('#manualLink').href = url || '#';
+  $('#retryBtn').classList.remove('hidden');
+}
 
-    <section class="console-wrap">
-      <div id="consoleLog" class="console" aria-hidden="false"></div>
-    </section>
+/* ---------- Main Redirect Logic ---------- */
+(async function main() {
+  setStatus('Loading configuration…');
+  setProgress(5);
+  log('Loading redirect nodes…');
 
-    <section class="progress-wrap">
-      <div class="progress-label">Handshake Progress</div>
-      <div class="progress-bar">
-        <div id="progress" class="progress-fill"></div>
-      </div>
-      <div id="progressPct" class="progress-pct">0%</div>
-    </section>
+  // Load redirects.json
+  let nodes = [];
+  try {
+    const r = await fetch('redirects.json', {cache:'no-store'});
+    if (!r.ok) throw new Error('redirects.json not found');
+    const data = await r.json();
+    nodes = Array.isArray(data.redirects) ? data.redirects : [];
+  } catch (e) {
+    setStatus('Config Error');
+    log('Failed to load configuration.', 'fail');
+    showFallback('Configuration file error. Please contact support.');
+    return;
+  }
+  if (!nodes.length) {
+    setStatus('No Servers');
+    log('No redirect nodes found.', 'fail');
+    showFallback('No server nodes are configured.');
+    return;
+  }
 
-    <section class="controls">
-      <a id="manualLink" class="btn hidden" href="#" target="_blank" rel="noopener">OPEN MANUAL</a>
-      <button id="retryBtn" class="btn ghost hidden">RETRY</button>
-    </section>
+  setStatus('Probing servers…');
+  setProgress(15);
+  let success = false;
 
-    <footer class="panel-foot">
-      <small>Network diagnostics simulated in-browser • Real redirect attempts are performed (with timeouts)</small>
-    </footer>
-  </main>
+  for (let i = 0; i < nodes.length; i++) {
+    const node = nodes[i];
+    const { name, url, delay } = node;
+    log(`Checking "${name}" [${url}]`);
+    setProgress(20 + (i * 25));
 
-  <script src="script.js" defer></script>
+    try {
+      const res = await fetch(url, { method: 'GET', cache: 'no-store' });
+      if (res.status === 200) {
+        setStatus(`Connected: ${name}`);
+        setProgress(100);
+        log(`Success! Server "${name}" online. Redirecting…`, 'ok');
+        $('#manualLink').href = url;
+        $('#manualLink').classList.remove('hidden');
+        await sleep(Number(delay) || 1200);
+        window.location.href = url;
+        success = true;
+        break;
+      } else {
+        log(`"${name}" responded with status ${res.status}.`, 'fail');
+      }
+    } catch (err) {
+      log(`"${name}" is offline or unreachable.`, 'fail');
+    }
+    await sleep(600);
+  }
+
+  if (!success) {
+    setStatus('All Servers Offline');
+    setProgress(100);
+    log('All nodes are offline. Please try again later.', 'fail');
+    showFallback('Sorry, all servers are currently offline. You may try again or contact support.', nodes[0] ? nodes[0].url : null);
+  }
+})();
+
+/* ---------- Retry logic ---------- */
+$('#retryBtn').onclick = () => {
+  $('#consoleLog').innerHTML = '';
+  $('#fallback').textContent = '';
+  $('#manualLink').classList.add('hidden');
+  $('#retryBtn').classList.add('hidden');
+  setProgress(0);
+  setStatus('Retrying…');
+  setTimeout(() => window.location.reload(), 400);
+};
+</script>
 </body>
 </html>
