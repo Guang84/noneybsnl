@@ -2,32 +2,38 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>BSNL NOC Redirect Portal</title>
+  <title>NONEY BSNL Redirect Portal</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f8fa; color: #222; margin: 0; }
-    .container { max-width: 500px; margin: 48px auto; padding: 32px 24px; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px #0001; }
-    h1 { color: #00796b; font-weight: 700; }
-    .status { margin: 16px 0; font-size: 1.2em; padding: 8px 16px; border-radius: 6px; background: #e0f2f1; display: inline-block; }
-    .progress { width: 100%; height: 7px; background: #eee; border-radius: 3px; margin: 18px 0; }
-    .progress-bar { height: 7px; background: #00bfa5; border-radius: 3px; transition: width 0.2s; }
-    #consoleLog { font-size: 0.98em; margin: 8px 0 12px 0; min-height: 32px; color: #444; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f8fafb; color: #222; margin: 0; }
+    .container { max-width: 520px; margin: 48px auto; padding: 32px 24px; background: #fff; border-radius: 12px; box-shadow: 0 2px 10px #0002; }
+    h1 { color: #00796b; font-weight: 700; font-size: 2em; margin-bottom: 6px;}
+    .status { margin: 12px 0; font-size: 1.15em; padding: 8px 16px; border-radius: 6px; background: #e0f7fa; display: inline-block; }
+    .progress { width: 100%; height: 10px; background: #eee; border-radius: 5px; margin: 20px 0; }
+    .progress-bar { height: 10px; background: linear-gradient(90deg,#00bfa5,#009688); border-radius: 5px; transition: width 0.3s; }
+    #consoleLog { font-size: 1em; margin: 10px 0 18px 0; min-height: 36px; color: #555; }
+    .node-list { margin: 0 0 16px 0; padding: 0; list-style: none;}
+    .node-item { display: flex; align-items: center; margin-bottom: 6px;}
+    .node-label { flex: 1; font-weight: 500; }
+    .node-status { width: 18px; height: 18px; border-radius: 50%; margin-right: 10px; display: inline-block;}
+    .node-status.online { background: #00c853; border: 2px solid #e0f7fa;}
+    .node-status.offline { background: #d32f2f; border: 2px solid #fff;}
+    .node-status.unknown { background: #ffd600; border: 2px solid #fff;}
+    .manual-link { background: #009688; color: #fff; margin-left:10px; padding: 5px 12px; border-radius: 5px; text-decoration: none; font-size: 0.96em;}
     .hidden { display: none; }
-    #manualLink, #retryBtn { margin-top: 18px; display: inline-block; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: 500; }
-    #manualLink { background: #009688; color: #fff; }
-    #retryBtn { background: #ffd54f; color: #333; border: none; cursor: pointer; }
-    #fallback { margin-top: 18px; color: #d32f2f; font-weight: 500; }
-    @media (max-width:600px) { .container{margin:12px;padding:16px;} }
+    #retryBtn { margin-top: 24px; padding: 10px 24px; border-radius: 8px; background: #ffd54f; color: #333; border: none; font-size: 1em; font-weight: 600; cursor: pointer;}
+    #fallback { margin-top: 18px; color: #d32f2f; font-weight: 500; font-size: 1.1em;}
+    @media (max-width:600px) { .container{margin:10px;padding:12px;} h1{font-size:1.35em;} }
   </style>
 </head>
 <body>
 <div class="container">
-  <h1>BSNL Network Portal</h1>
+  <h1>NONEY BSNL Network Redirect Portal</h1>
   <div id="statusPill" class="status">Initializing…</div>
   <div class="progress"><div id="progress" class="progress-bar" style="width:0%"></div></div>
   <div id="progressPct"></div>
+  <ul id="nodeList" class="node-list"></ul>
   <div id="consoleLog"></div>
-  <a id="manualLink" class="hidden" href="#" target="_blank">Open Manually</a>
   <button id="retryBtn" class="hidden">Retry</button>
   <div id="fallback"></div>
 </div>
@@ -45,20 +51,29 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 function setStatus(text) { $('#statusPill').textContent = text; }
 function setProgress(p) {
   $('#progress').style.width = p + '%';
-  $('#progressPct').textContent = p + '%';
+  $('#progressPct').textContent = Math.round(p) + '%';
 }
-function showFallback(message, url=null) {
+function nodeStatusDot(status) {
+  return `<span class="node-status ${status}"></span>`;
+}
+function updateNodeList(nodes, statuses) {
+  $('#nodeList').innerHTML = nodes.map((node,i) => {
+    let status = statuses[i];
+    let statusText = status === 'online' ? 'Online' : status === 'offline' ? 'Offline' : 'Checking…';
+    let linkBtn = `<a class="manual-link${status!=='online'?' hidden':''}" href="${node.url}" target="_blank">Open</a>`;
+    return `<li class="node-item">${nodeStatusDot(status)}<span class="node-label">${node.name}</span> <span style="margin-left:8px">${statusText}</span>${linkBtn}</li>`;
+  }).join('');
+}
+function showFallback(message) {
   $('#fallback').textContent = message;
-  $('#manualLink').classList.remove('hidden');
-  $('#manualLink').href = url || '#';
   $('#retryBtn').classList.remove('hidden');
 }
 
-/* ---------- Redirect Logic ---------- */
+/* ---------- Advanced Redirect Logic ---------- */
 (async function main() {
   setStatus('Loading configuration…');
   setProgress(5);
-  log('Loading redirect nodes…');
+  log('Loading BSNL redirect nodes…');
 
   // Load redirects.json
   let nodes = [];
@@ -81,44 +96,52 @@ function showFallback(message, url=null) {
   }
 
   setStatus('Probing servers…');
-  setProgress(15);
+  setProgress(12);
+  log('Probing servers for live status…');
+
+  let statuses = nodes.map(_ => 'unknown');
+  updateNodeList(nodes, statuses);
+
   let success = false;
-
   for (let i = 0; i < nodes.length; i++) {
-    const node = nodes[i];
-    const { name, url, delay } = node;
-    log(`Checking "${name}" [${url}]`);
-    setProgress(20 + (i * 40 / nodes.length));
-
+    statuses[i] = 'checking';
+    updateNodeList(nodes, statuses);
+    setStatus(`Checking: ${nodes[i].name}`);
+    setProgress(12 + (i * 60 / nodes.length));
+    log(`Trying "${nodes[i].name}" [${nodes[i].url}]`);
+    let nodeOnline = false;
     try {
-      // Perform a quick HTTP GET
-      const res = await fetch(url, { method: 'GET', cache: 'no-store' });
+      const res = await fetch(nodes[i].url, { method: 'GET', cache: 'no-store' });
       if (res.status === 200) {
-        setStatus(`Connected: ${name}`);
+        statuses[i] = 'online';
+        updateNodeList(nodes, statuses);
+        setStatus(`Connected: ${nodes[i].name}`);
         setProgress(100);
-        log(`Success! Server "${name}" online. Redirecting…`, 'ok');
-        $('#manualLink').href = url;
-        $('#manualLink').classList.remove('hidden');
-        await sleep(Number(delay) || 1200);
-        window.location.href = url;
+        log(`Success! Server "${nodes[i].name}" online. Redirecting…`, 'ok');
+        await sleep(Number(nodes[i].delay) || 1200);
+        window.location.href = nodes[i].url;
         success = true;
         break;
       } else {
-        log(`"${name}" responded with status ${res.status}.`, 'fail');
+        statuses[i] = 'offline';
+        updateNodeList(nodes, statuses);
+        log(`"${nodes[i].name}" responded with status ${res.status}.`, 'fail');
       }
     } catch (err) {
-      log(`"${name}" is offline or unreachable.`, 'fail');
+      statuses[i] = 'offline';
+      updateNodeList(nodes, statuses);
+      log(`"${nodes[i].name}" is offline or unreachable.`, 'fail');
     }
-    await sleep(500);
+    await sleep(400);
   }
 
   if (!success) {
     setStatus('All Servers Offline');
     setProgress(100);
     log('All nodes are offline. Please try again later.', 'fail');
+    updateNodeList(nodes, statuses);
     showFallback(
-      'Sorry, all servers are currently offline. You may try again or contact support.',
-      nodes[0] ? nodes[0].url : null
+      'Sorry, all servers are currently offline.<br>You may try again or open manually from the list above.'
     );
   }
 })();
@@ -127,8 +150,6 @@ function showFallback(message, url=null) {
 $('#retryBtn').onclick = () => {
   $('#consoleLog').innerHTML = '';
   $('#fallback').textContent = '';
-  $('#manualLink').classList.add('hidden');
-  $('#retryBtn').classList.add('hidden');
   setProgress(0);
   setStatus('Retrying…');
   setTimeout(() => window.location.reload(), 400);
