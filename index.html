@@ -3,19 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <title>BSNL NOC Redirect Portal</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
     body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f8fa; color: #222; margin: 0; }
-    .container { max-width: 480px; margin: 48px auto; padding: 32px 24px; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px #0001; }
+    .container { max-width: 500px; margin: 48px auto; padding: 32px 24px; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px #0001; }
     h1 { color: #00796b; font-weight: 700; }
     .status { margin: 16px 0; font-size: 1.2em; padding: 8px 16px; border-radius: 6px; background: #e0f2f1; display: inline-block; }
     .progress { width: 100%; height: 7px; background: #eee; border-radius: 3px; margin: 18px 0; }
     .progress-bar { height: 7px; background: #00bfa5; border-radius: 3px; transition: width 0.2s; }
-    #consoleLog { font-size: 0.96em; margin: 8px 0 12px 0; min-height: 32px; color: #444; }
+    #consoleLog { font-size: 0.98em; margin: 8px 0 12px 0; min-height: 32px; color: #444; }
     .hidden { display: none; }
     #manualLink, #retryBtn { margin-top: 18px; display: inline-block; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: 500; }
     #manualLink { background: #009688; color: #fff; }
     #retryBtn { background: #ffd54f; color: #333; border: none; cursor: pointer; }
     #fallback { margin-top: 18px; color: #d32f2f; font-weight: 500; }
+    @media (max-width:600px) { .container{margin:12px;padding:16px;} }
   </style>
 </head>
 <body>
@@ -30,7 +32,6 @@
   <div id="fallback"></div>
 </div>
 <script>
-/* ---------- Utilities ---------- */
 const $ = sel => document.querySelector(sel);
 const log = (text, cls = '') => {
   const el = document.createElement('div');
@@ -53,7 +54,7 @@ function showFallback(message, url=null) {
   $('#retryBtn').classList.remove('hidden');
 }
 
-/* ---------- Main Redirect Logic ---------- */
+/* ---------- Redirect Logic ---------- */
 (async function main() {
   setStatus('Loading configuration…');
   setProgress(5);
@@ -87,9 +88,10 @@ function showFallback(message, url=null) {
     const node = nodes[i];
     const { name, url, delay } = node;
     log(`Checking "${name}" [${url}]`);
-    setProgress(20 + (i * 25));
+    setProgress(20 + (i * 40 / nodes.length));
 
     try {
+      // Perform a quick HTTP GET
       const res = await fetch(url, { method: 'GET', cache: 'no-store' });
       if (res.status === 200) {
         setStatus(`Connected: ${name}`);
@@ -107,14 +109,17 @@ function showFallback(message, url=null) {
     } catch (err) {
       log(`"${name}" is offline or unreachable.`, 'fail');
     }
-    await sleep(600);
+    await sleep(500);
   }
 
   if (!success) {
     setStatus('All Servers Offline');
     setProgress(100);
     log('All nodes are offline. Please try again later.', 'fail');
-    showFallback('Sorry, all servers are currently offline. You may try again or contact support.', nodes[0] ? nodes[0].url : null);
+    showFallback(
+      'Sorry, all servers are currently offline. You may try again or contact support.',
+      nodes[0] ? nodes[0].url : null
+    );
   }
 })();
 
