@@ -2,8 +2,7 @@
   "serverLinks": [
     "http://localhost:8000",
     "http://192.168.1.43:8000",
-    "http://0.0.0.0:8000",
-    "https://40283d2b24b1.ngrok-free.app/"
+    "http://0.0.0.0:8000"
   ],
   "mainMessage": "Redirecting you to the best available server...",
   "subMessage": "Checking available servers. You will be redirected soon.",
