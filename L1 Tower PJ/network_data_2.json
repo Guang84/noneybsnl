@@ -1,0 +1,71 @@
+{
+  "mapId": "network_2",
+  "mapName": "Secondary Distribution Network",
+  "dcOffice": {
+    "description": "Splitter point",
+    "latitude": 24.855395932928534,
+    "longitude": 93.62494377777747
+  },
+  "joints": [
+    {
+      "description": "Joint2A",
+      "latitude": 24.855215439250294,
+      "longitude": 93.62513133008909,
+      "connectedTo": "DC2"
+    },
+    {
+      "description": "Joint2B",
+      "latitude": 24.855135506251514,
+      "longitude": 93.6253558245227,
+      "connectedTo": "Joint2A"
+    },
+    {
+      "description": "Joint2C",
+      "latitude": 24.855100696703627,
+      "longitude": 93.62554195598346,
+      "connectedTo": "Joint2B"
+    },
+    {
+      "description": "Joint2D",
+      "latitude": 24.85504525925531,
+      "longitude": 93.62572382489172,
+      "connectedTo": "Joint2C"
+    },
+    {
+      "description": "Joint2E",
+      "latitude": 24.85500013573249,
+      "longitude": 93.62598384059646,
+      "connectedTo": "Joint2D"
+    },
+    {
+      "description": "Joint2F",
+      "latitude": 24.85502076363068,
+      "longitude": 93.62607761675228,
+      "connectedTo": "Joint2E"
+    },
+    {
+      "description": "Joint2G",
+      "latitude": 24.85503881303876,
+      "longitude": 93.6261472384437,
+      "connectedTo": "Joint2F"
+    },
+    {
+      "description": "Joint2H",
+      "latitude": 24.854955012193237,
+      "longitude": 93.62642572520944,
+      "connectedTo": "Joint2G"
+    },
+    {
+      "description": "Joint2I",
+      "latitude": 24.854907310148118,
+      "longitude": 93.62661185667021,
+      "connectedTo": "Joint2H"
+    }
+  ],
+  "olt": {
+    "name": "ASOC Noney",
+    "latitude": 24.854863475817496,
+    "longitude": 93.62673547071901,
+    "connectedTo": "Joint2D"
+  }
+}

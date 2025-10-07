@@ -1,0 +1,23 @@
+{
+  "maps": [
+    {
+      "id": "network_1",
+      "name": "Main Fiber Network",
+      "file": "network_data_1.json",
+      "description": "Primary fiber optic network covering main distribution area"
+    },
+    {
+      "id": "network_2",
+      "name": "Secondary Distribution Network",
+      "file": "network_data_2.json",
+      "description": "Secondary network for residential areas"
+    },
+    {
+      "id": "network_3",
+      "name": "Enterprise Campus Network",
+      "file": "network_data_3.json",
+      "description": "Enterprise campus fiber network"
+    }
+  ],
+  "default_map": "network_1"
+}
