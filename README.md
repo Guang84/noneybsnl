@@ -1,9 +1,42 @@
-# **Dynamic Server Loader**
+# 🧩 Dynamic Server Loader
 
-**Dynamic Hosting Files for BSNL gd_ent**
+> ### Dynamic Hosting Files for **BSNL gd_ent**
+> This repository contains configuration and content files used for **dynamic web hosting** on BSNL’s **gd_ent** broadband service.
+It includes essential **HTML**, **CSS**, **JavaScript**, and **JSON** files for redirect management, message handling, and service connectivity.
 
-This repository contains a set of files used for configuring dynamic web hosting on BSNL's **gd_ent** service. It includes basic HTML, CSS, JavaScript, and JSON files for redirects and message handling.
+---
 
-📍 **Web Link:** [https://guang84.github.io/noneybsnl/](https://guang84.github.io/noneybsnl/)
+## 🌐 Web Access
 
-👉 *Click on the link above if you want to visit the NONEY BSNL broadband service.*
+**Public Link:** [https://guang84.github.io/noneybsnl/](https://guang84.github.io/noneybsnl/)
+
+> 💡 Click the link above to visit the **NONEY BSNL Broadband Service** demo page.
+
+---
+
+> ## ⚙️ About the Project
+> This repository was created to provide a **stable online endpoint** for BSNL’s **NONEY broadband service**.
+Since the **local server links frequently changed**, this GitHub-hosted version served as a **dynamic connector**—allowing customers and broadband systems to consistently access or redirect to the correct local server.
+
+> #### The full application ran on a **local BSNL web server**, handling dynamic operations, user routing, and data exchanges.
+
+> ✅ **Project Highlights:**
+> * Fully implemented and operated successfully for a years.
+> * Served as a reliable redirect and connection point between customers and the Noney BSNL broadband server.
+> * Hosted via GitHub Pages for stability and testing  when local server updates & URLs changed.
+
+> Currently, the **local BSNL server is offline**, as I have **stopped working at the NONEY BSNL Broadband Service**.
+However, the full application **remains available for purchase**, and it is **exclusively offered for BSNL broadband use**.
+
+---
+
+> ## 🛠️ Local Setup (Optional)
+>Contact if you want to run the project locally.
+
+
+> ## 📫 Project Status
+>✅ **Project Completed** — Successfully deployed and operated for years on BSNL’s broadband network.
+>🔌 **Server Offline** — The local server is currently offline as I have stopped working at the NONEY BSNL broadband service.
+>💼 **Available for Purchase** — The full application is available for acquisition, exclusively for **BSNL broadband deployment**.
+
+---
