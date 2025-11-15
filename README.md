@@ -31,12 +31,11 @@ However, the full application **remains available for purchase**, and it is **ex
 ---
 
 > ## 🛠️ Local Setup (Optional)
->Contact if you want to run the project locally.
-
+>Contact dev
 
 > ## 📫 Project Status
->✅ **Project Completed** — Successfully deployed and operated for years on BSNL’s broadband network.
->🔌 **Server Offline** — The local server is currently offline as I have stopped working at the NONEY BSNL broadband service.
->💼 **Available for Purchase** — The full application is available for acquisition, exclusively for **BSNL broadband deployment**.
+> ✅ **Project Completed** — Successfully deployed and operated for years on BSNL’s broadband network.
+> 🔌 **Server Offline** — The local server has been shut down due to the discontinuation of my role at NONEY BSNL broadband service.
+> 💼 **Available for Purchase** — The full application is available for acquisition, exclusively for **BSNL broadband deployment**.
 
 ---
