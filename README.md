@@ -24,10 +24,7 @@ Since the **local server links frequently changed**, this GitHub-hosted version 
 > * Fully implemented and operated successfully for a years.
 > * Served as a reliable redirect and connection point between customers and the Noney BSNL broadband server.
 > * Hosted via GitHub Pages for stability and testing  when local server updates & URLs changed.
-
-> Currently, the **local BSNL server is offline**, as I have **stopped working at the NONEY BSNL Broadband Service**.
-However, the full application **remains available for purchase**, and it is **exclusively offered for BSNL broadband use**.
-
+ 
 ---
 
 > ## 🛠️ Local Setup (Optional)
