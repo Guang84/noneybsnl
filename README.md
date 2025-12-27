@@ -9,20 +9,39 @@ It includes essential **HTML**, **CSS**, **JavaScript**, and **JSON** files for 
 ## 🌐 Web Access
 
 <p align="center">
-  <img src="./webimages/p1.png" width="250" />
+  <img src="./webimages/p1.png" width="250" style="margin-right: 20px;" />
   <img src="./webimages/p2.png" width="250" />
-  <img src="./webimages/p3.png" width="250" />
+</p>
+
+<p align="center">
+  <img src="./webimages/p3.png" width="250" style="margin-right: 20px;" />
   <img src="./webimages/p4.png" width="250" />
-  <img src="./webimages/p5.png" width="250" />
+</p>
+
+<p align="center">
+  <img src="./webimages/p5.png" width="250" style="margin-right: 20px;" />
   <img src="./webimages/p6.png" width="250" />
-  <img src="./webimages/p7.png" width="250" />
+</p>
+
+<p align="center">
+  <img src="./webimages/p7.png" width="250" style="margin-right: 20px;" />
   <img src="./webimages/p8.png" width="250" />
-  <img src="./webimages/p9.png" width="250" />
+</p>
+
+<p align="center">
+  <img src="./webimages/p9.png" width="250" style="margin-right: 20px;" />
   <img src="./webimages/a1.png" width="250" />
-  <img src="./webimages/a2.png" width="250" />
+</p>
+
+<p align="center">
+  <img src="./webimages/a2.png" width="250" style="margin-right: 20px;" />
   <img src="./webimages/c1.png" width="250" />
+</p>
+
+<p align="center">
   <img src="./webimages/h1.png" width="250" />
 </p>
+
 
 
 **Public Link:** [https://guang84.github.io/noneybsnl/](https://guang84.github.io/noneybsnl/)
