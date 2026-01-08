@@ -47,7 +47,7 @@ It includes essential **HTML**, **CSS**, **JavaScript**, and **JSON** files for 
 
 **Public Link:** [https://guang84.github.io/noneybsnl/](https://guang84.github.io/noneybsnl/)
 
-> 💡 Click the link above to visit the **NONEY BSNL Broadband Service** demo page.
+> 💡 Click the link above to visit the **NONEY BSNL Broadband Service** (SERVER DOWN).
 
 ---
 
