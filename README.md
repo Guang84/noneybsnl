@@ -11,7 +11,6 @@
 ![Platform](https://img.shields.io/badge/Platform-GitHub%20Pages-lightgrey)
 ![License](https://img.shields.io/badge/License-Portfolio-lightgrey)
 
-> ⚠️ **Portfolio Repository**
 >
 > This repository serves as:
 >
