@@ -1,284 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noney BSNL</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="https://bsnl.co.in/assets/bsnl1-E6iVMV-k.png" type="image/x-icon">
-    <style>
-        :root {
-            --primary: #6e00ff;
-            --secondary: #00ff88;
-            --error: #ff3860;
-            --bg: #0f0f15;
-            --text: #f0f0f0;
-            --text-light: #b0b0b0;
-            --card-bg: #1a1a24;
-            --border: #2a2a3a;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg);
-            background-image: 
-                radial-gradient(circle at 25% 25%, rgba(255, 56, 96, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 75% 75%, rgba(110, 0, 255, 0.1) 0%, transparent 50%);
-            color: var(--text);
-            font-family: 'Inter', sans-serif;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        .card {
-            width: 90%;
-            max-width: 500px;
-            border-radius: 24px;
-            padding: 40px;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .error-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 24px;
-            color: var(--error);
-            filter: drop-shadow(0 0 10px rgba(255, 56, 96, 0.3));
-        }
-
-        h1 {
-            color: var(--error);
-            margin: 0 0 16px;
-            font-size: 28px;
-            font-weight: 700;
-        }
-
-        .error-code {
-            display: inline-block;
-            padding: 4px 12px;
-            background: rgba(255, 56, 96, 0.2);
-            border-radius: 4px;
-            font-size: 14px;
-            margin-bottom: 24px;
-            color: var(--error);
-            font-family: monospace;
-        }
-
-        .error-message {
-            font-size: 16px;
-            margin-bottom: 32px;
-            color: var(--text-light);
-            line-height: 1.6;
-        }
-
-        .support-options {
-            margin: 32px 0;
-            text-align: left;
-        }
-
-        .support-item {
-            margin: 20px 0;
-            display: flex;
-            align-items: center;
-        }
-
-        .support-item svg {
-            margin-right: 12px;
-            color: var(--primary);
-            min-width: 24px;
-        }
-
-        .support-item a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .support-item a:hover {
-            color: var(--secondary);
-            text-decoration: underline;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 16px 32px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            margin-top: 16px;
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(110, 0, 255, 0.3);
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(110, 0, 255, 0.4);
-        }
-
-        .btn svg {
-            margin-right: 8px;
-        }
-
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .particle {
-            position: absolute;
-            background: var(--error);
-            border-radius: 50%;
-            opacity: 0.3;
-            animation: float linear infinite;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0) rotate(0deg); }
-            100% { transform: translateY(-100vh) rotate(360deg); }
-        }
-
-        @media (max-width: 480px) {
-            .card {
-                padding: 24px;
-            }
-            
-            h1 {
-                font-size: 24px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noney BSNL | Error</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="particles" id="particles"></div>
-    
-    <div class="card">
-        <svg class="error-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-        </svg>
-        
-        <h1>Connection Failed</h1>
-        <div class="error-code" id="errorCode"></div>
-        <div class="error-message" id="errorMessage">
-            We couldn't establish a connection to the portal server.
-        </div>
-        
-        <div class="support-options">
-            <div class="support-item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                    <polyline points="22,6 12,13 2,6"></polyline>
-                </svg>
-                <a href="mailto:support@noneybsnl.in">NA</a>
-            </div>
-            
-            <div class="support-item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                </svg>
-                <a href="#" id="liveChat">Live Chat Support <span><b style="color: #ff3860;">(Developing)</b></span></a>
-            </div>
-            
-            <div class="support-item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                </svg>
-                <a href="tel:+918415028828">NA</a>
-            </div>
-        </div>
-        
-        <button class="btn" id="retryBtn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="23 4 23 10 17 10"></polyline>
-                <polyline points="1 20 1 14 7 14"></polyline>
-                <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
-            </svg>
-            Try Again
-        </button>
+  <div class="background-glow" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+  </div>
+
+  <div class="error-page-card">
+    <div class="brand-pill">Gateway Error</div>
+    <h1>Connection Failed</h1>
+    <div class="error-code" id="errorCode">ERR_UNKNOWN</div>
+    <p class="subcopy" id="errorMessage">We could not reach a healthy server.</p>
+    <div class="error-meta">
+      <div>Timestamp: <span id="errorTimestamp"></span></div>
+      <div class="server-summary">
+        <strong>Failed Servers</strong>
+        <ul id="serverSummary"></ul>
+      </div>
     </div>
 
-    <script>
-        // Create error particles
-        function createParticles() {
-            const container = document.getElementById('particles');
-            for (let i = 0; i < 20; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                
-                const size = Math.random() * 6 + 2;
-                const posX = Math.random() * 100;
-                const duration = Math.random() * 15 + 10;
-                const delay = Math.random() * -20;
-                
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                particle.style.left = `${posX}%`;
-                particle.style.animationDuration = `${duration}s`;
-                particle.style.animationDelay = `${delay}s`;
-                particle.style.opacity = Math.random() * 0.3 + 0.1;
-                particle.style.background = `hsl(${Math.random() * 30 + 350}, 100%, 70%)`;
-                
-                container.appendChild(particle);
-            }
-        }
+    <div class="actions">
+      <button type="button" onclick="window.location.href='index.html'">Try Again</button>
+      <!--
+        <button type="button" onclick="window.location.reload()">Refresh</button>
+        -->
+    </div>
+  </div>
 
-        // Parse URL parameters
-        function parseError() {
-            const params = new URLSearchParams(window.location.search);
-            const message = params.get('message');
-            const code = params.get('code');
-            
-            if (message) {
-                document.getElementById('errorMessage').textContent = message;
-            }
-            
-            if (code) {
-                document.getElementById('errorCode').textContent = code;
-            }
-        }
+  <script type="module">
+    import { populateErrorPage } from './js/ui.js';
 
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            createParticles();
-            parseError();
-            
-            document.getElementById('retryBtn').addEventListener('click', () => {
-                window.location.href = '/';
-            });
-            
-            document.getElementById('liveChat').addEventListener('click', (e) => {
-                e.preventDefault();
-                const now = new Date();
-                const hours = now.getHours();
-                
-                if (hours >= 9 && hours < 18) {
-                    alert('Connecting you to live chat support...');
-                } else {
-                    alert('Our live chat is currently unavailable. Please try again between 9AM-6PM or use email/phone support.');
-                }
-            });
-        });
-    </script>
+    const params = new URLSearchParams(window.location.search);
+    const detailsParam = params.get('details');
+    let parsedDetails = {};
+
+    try {
+      parsedDetails = detailsParam ? JSON.parse(detailsParam) : {};
+    } catch (error) {
+      parsedDetails = {};
+    }
+
+    const details = {
+      code: params.get('code') || 'ERR_UNKNOWN',
+      message: params.get('message') || 'We could not reach a healthy server.',
+      failedServers: Array.isArray(parsedDetails.failedServers) ? parsedDetails.failedServers : []
+    };
+
+    populateErrorPage(details, document.body);
+  </script>
 </body>
 </html>

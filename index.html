@@ -4,199 +4,45 @@
   <meta charset="UTF-8">
   <title>Noney BSNL</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      background: linear-gradient(135deg, #0072ff 0%, #00c6ff 100%);
-      color: #fff;
-      font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      transition: background 0.5s;
-    }
-    .container {
-      background: rgba(0,0,0,0.5);
-      padding: 2rem 2.5rem;
-      border-radius: 1rem;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-      max-width: 400px;
-      text-align: center;
-    }
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-    }
-    p {
-      margin: 1rem 0;
-      font-size: 1.1rem;
-    }
-    .countdown {
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin-bottom: 1.5rem;
-    }
-    .server-list {
-      list-style: none;
-      padding: 0;
-      margin: 1rem 0;
-    }
-    .server-link {
-      display: block;
-      margin: 0.5rem 0;
-      padding: 0.6em 1.2em;
-      font-size: 1rem;
-      color: #fff;
-      background: #0072ff;
-      border: none;
-      border-radius: 0.5rem;
-      text-decoration: none;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .server-link:hover {
-      background: #005bb5;
-    }
-    .error-message {
-      color: #ff8080;
-      font-weight: bold;
-      display: none;
-      margin-top: 1rem;
-    }
-    .fallback {
-      display: none;
-      margin-top: 2rem;
-      color: #ff8080;
-    }
-    @media (max-width: 600px) {
-      .container {
-        padding: 1rem;
-        max-width: 95vw;
-      }
-      h1 {
-        font-size: 1.4rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/loader.css">
+  <link rel="stylesheet" href="css/terminal.css">
+  <link rel="stylesheet" href="css/modern.css">
 </head>
 <body>
+  <div class="background-glow" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+  </div>
+
   <div class="container">
-    <h1 id="mainMessage"></h1>
-    <p id="subMessage"></p>
-    <div class="countdown" id="countdown"></div>
-    <ul class="server-list" id="serverList"></ul>
+    <div class="brand-pill">Noney BSNL </div>
+    <h1 id="mainMessage">Redirecting...</h1>
+    <p class="subcopy" id="subMessage">Checking available servers...</p>
+
+    <div class="loader-wrap" id="loaderWrap">
+      <div class="loader" aria-hidden="true" style="width: 72px; height: 36px;"></div>
+      <div class="loader-label" id="statusTextInline">Checking available servers…</div>
+      <div class="loader-log-layer" id="terminalCard" aria-live="polite">
+        <div class="loader-log-body" id="terminalBody"></div>
+      </div>
+    </div>
+
+    <div class="countdown-card" id="countdownCard" style="display: none;">
+      <span class="countdown-label">Redirecting in</span>
+      <div class="countdown" id="countdown">5</div>
+      <div class="countdown-progress" aria-hidden="true"><span id="countdownBar"></span></div>
+    </div>
+
     <div class="error-message" id="errorMessage"></div>
     <div class="fallback" id="fallbackPage">
       <h2>All servers are currently offline.</h2>
       <p>Please try again later or check your connection.</p>
       <button onclick="window.location.reload()">Retry</button>
     </div>
+
   </div>
-  <script>
-    let config = {
-      "serverLinks": [],
-      "mainMessage": "Redirecting...",
-      "subMessage": "Checking available servers...",
-      "countdownSeconds": 5,
-      "errorMessage": "Redirection failed. Please select a server below."
-    };
 
-    // Utility: test if a link is online
-    async function checkServer(url, timeout = 4000) {
-      try {
-        const controller = new AbortController();
-        const timer = setTimeout(() => controller.abort(), timeout);
-        // Use 'no-cors' mode to avoid CORS errors (will only check if server responds at all)
-        const response = await fetch(url, { method: 'GET', mode: 'no-cors', signal: controller.signal });
-        clearTimeout(timer);
-        // Even opaque responses (from no-cors) resolve: treat as online
-        return true;
-      } catch (e) {
-        return false;
-      }
-    }
-
-    // Load config from JSON file
-    fetch('redirect-config.json')
-      .then(response => response.json())
-      .then(data => {
-        config = data;
-        setupPage();
-        checkAndRedirect();
-      })
-      .catch(() => {
-        setupPage();
-        showFallback();
-      });
-
-    function setupPage() {
-      document.getElementById('mainMessage').textContent = config.mainMessage;
-      document.getElementById('subMessage').textContent = config.subMessage;
-      document.getElementById('countdown').textContent = config.countdownSeconds;
-      document.getElementById('errorMessage').innerHTML = "";
-      document.getElementById('serverList').innerHTML = "";
-      document.getElementById('fallbackPage').style.display = "none";
-    }
-
-    async function checkAndRedirect() {
-      let onlineServers = [];
-      const serverListEl = document.getElementById('serverList');
-      serverListEl.innerHTML = "";
-      let checkPromises = config.serverLinks.map(async (url, idx) => {
-        let online = await checkServer(url, 4000);
-        if (online) onlineServers.push(url);
-
-        // Show all links for manual selection
-        const li = document.createElement('li');
-        const a = document.createElement('a');
-        a.textContent = `Server ${idx+1}: ${url}`;
-        a.href = url;
-        a.className = 'server-link';
-        a.target = '_blank';
-        if (online) {
-          a.style.opacity = 1;
-        } else {
-          a.style.opacity = 0.5;
-          a.title = "Offline";
-        }
-        a.onclick = function(e) {
-          e.preventDefault();
-          if (online) window.location.href = url;
-        };
-        li.appendChild(a);
-        serverListEl.appendChild(li);
-      });
-
-      // Wait for all checks to finish
-      await Promise.all(checkPromises);
-
-      if (onlineServers.length > 0) {
-        // Redirect to first online server after countdown
-        let seconds = config.countdownSeconds;
-        const countdownEl = document.getElementById('countdown');
-        const redirectUrl = onlineServers[0];
-        const timer = setInterval(() => {
-          countdownEl.textContent = seconds;
-          seconds--;
-          if (seconds <= 0) {
-            clearInterval(timer);
-            window.location.replace(redirectUrl);
-          }
-        }, 1000);
-        document.getElementById('errorMessage').style.display = "none";
-      } else {
-        showFallback();
-      }
-    }
-
-    function showFallback() {
-      document.getElementById('countdown').style.display = "none";
-      document.getElementById('serverList').style.display = "none";
-      document.getElementById('fallbackPage').style.display = "block";
-      document.getElementById('errorMessage').style.display = "none";
-    }
-  </script>
+  <script type="module" src="js/app.js"></script>
 </body>
 </html>

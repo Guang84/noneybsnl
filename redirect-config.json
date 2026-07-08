@@ -1,12 +1,23 @@
 {
-  "serverLinks": [
-    "ngrok link..",
-    "http://localhost:8000",
-    "http://192.168.1.43:8000",
-    "http://0.0.0.0:8000"
+  "servers": [
+    {
+      "name": "Primary Server",
+      "url": "https://primaryserver1Example.com",
+      "priority": 1,
+      "enabled": true
+    },
+    {
+      "name": "Backup Server",
+      "url": "http://localhost:443",
+      "priority": 2,
+      "enabled": true
+    }
   ],
+  "timeout": 30000,
+  "retry": 2111,
+  "delay": 2250,
+  "countdown": 522,
   "mainMessage": "Redirecting you to the best available server...",
   "subMessage": "Checking available servers. You will be redirected soon.",
-  "countdownSeconds": 5,
   "errorMessage": "Redirection failed. Please select a server below."
 }
