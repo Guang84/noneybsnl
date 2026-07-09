@@ -77,8 +77,7 @@ This repository contains the public-facing deployment files, documentation, scre
 
 | Item | Details |
 |------|----------|
-| Repository | https://github.com/Guang84/Noney-BSNL-Broadband-NMS |
-| Public Gateway | GitHub Pages |
+| Public Gateway | [GitHub Page](https://guang84.github.io/Noney-BSNL-Broadband-NMS/)  |
 | Current Status | Offline |
 | Production Environment | Retired |
 
